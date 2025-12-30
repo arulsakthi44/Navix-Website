@@ -13,6 +13,7 @@ import PBP from "../assets/pbp.png"
 import Selectric from "../assets/Selectric.png"
 import vgLife from "../assets/vg-life.png"
 import Wimchem from "../assets/wimchem.png"
+import Kutir from "../assets/kutir.png"
 
 
 // Client logos with real brand images
@@ -31,6 +32,7 @@ const CLIENTS = [
   { name: 'Selectric', imageUrl: Selectric },
   { name: 'VG Life', imageUrl: vgLife },
   { name: 'Wimchem', imageUrl: Wimchem },
+  { name: 'Wimchem', imageUrl: Kutir },
 ];
 
 export function ClientLogos() {
