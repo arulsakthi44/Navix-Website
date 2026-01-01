@@ -3,14 +3,38 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft } from "lucide-react";
+
+import Schoolone from "../assets/i2g-1.png";
+import Schooltwo from "../assets/i2g-2.png";
+import Schoolthree from "../assets/i2g-3.png";
+import Schoolfour from "../assets/i2g-4.png";
+import Schoolfive from "../assets/i2g-5.png";
+import Schoolsix from "../assets/i2g-6.png";
+
 import Video1 from "../assets/videos/cs.mp4";
 import Video2 from "../assets/videos/nakear.mp4";
-import Shirt from "../assets/shirt.png";
+import Shirt from "../assets/i2gbanner.png";
+
+import Nakearstats from "../assets/nakear-stats.png";
+import Greenone from "../assets/green.png";
+import Greentwo from "../assets/green.png";
+import Greenthree from "../assets/green.png";
+import Greenfour from "../assets/green.png";
+
 import Stats from "../assets/stats.png";
 import Nakone from "../assets/nak-one.png";
 import Naktwo from "../assets/nak-two.png";
 import Nakthree from "../assets/nak-three.png";
 import Nakfour from "../assets/nak-four.png";
+
+interface AudienceInsight {
+  title: string;
+  description: string;
+}
+interface ourStrategy {
+  title: string;
+  description: string;
+}
 
 interface ProjectData {
   id: number;
@@ -18,6 +42,7 @@ interface ProjectData {
   description: string;
   category: string;
   imageUrl: string;
+  impactImage: string;
   videoUrl?: string;
   client: string;
   year: string;
@@ -26,7 +51,8 @@ interface ProjectData {
   conceptDescription: string;
   moodboardImages: string[];
   sketchImages: string[];
-  processDescription: string;
+  ourStrategy?: ourStrategy[];
+  audienceInsights?: AudienceInsight[];
   processImages: string[];
 }
 
@@ -34,66 +60,86 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
   1: {
     id: 1,
     title: "Quantum Finance Dashboard",
-    description:
-      "A revolutionary fintech platform with real-time analytics and AI-powered insights for modern investors.",
+    description: "...",
     category: "applications",
     imageUrl: Shirt,
+    impactImage: Nakearstats,
     client: "Quantum Capital",
     year: "2024",
     services: ["UI/UX Design", "Dashboard Development", "Data Visualization"],
-    fullDescription:
-      "Quantum Finance Dashboard revolutionizes the way investors interact with financial data. Our team designed an intuitive, real-time analytics platform that combines cutting-edge AI technology with a sleek, modern interface. The dashboard provides comprehensive market insights, personalized investment recommendations, and advanced portfolio management tools.",
-    conceptDescription:
-      "The concept behind Quantum Finance was to create a financial platform that feels less like traditional banking software and more like a premium digital experience. We focused on clarity, speed, and intelligence—ensuring that users can make informed decisions quickly without being overwhelmed by data complexity.",
-    moodboardImages: [
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800",
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    fullDescription: "...",
+    conceptDescription: "...",
+    moodboardImages: [],
+    sketchImages: [],
+
+    ourStrategy: [],
+
+    audienceInsights: [
+      {
+        title: "Parent Persona",
+        description:
+          "Our most active B2C segment was Women aged 30–45 (68% of engagement), focusing on kids' upskilling and online tuition.",
+      },
+      {
+        title: "Investor Persona",
+        description:
+          "Franchise leads peaked among Men aged 35–50 from Tier 1 and Tier 2 cities seeking stable business opportunities.",
+      },
+      {
+        title: "Content Retention",
+        description:
+          "The Franchise Opportunity explainer video achieved an 8.5% completion rate, indicating strong investor intent.",
+      },
     ],
-    sketchImages: [
-      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800",
-      "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800",
-      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800",
+
+    processImages: [
+      Schoolone,
+      Schooltwo,
+      Schoolthree,
+      Schoolfour,
+      Schoolfive,
+      Schoolsix,
     ],
-    processDescription:
-      "Our design process involved extensive user research, wireframing, and iterative prototyping. We conducted over 50 user interviews with professional investors to understand their pain points and needs. The result is a dashboard that prioritizes the most critical information while maintaining accessibility to advanced features.",
+  },
+
+  2: {
+    id: 1,
+    title: "Quantum Finance Dashboard",
+    description: "...",
+    category: "applications",
+    imageUrl: Shirt,
+    impactImage: Nakearstats,
+    client: "Quantum Capital",
+    year: "2024",
+    services: ["UI/UX Design", "Dashboard Development", "Data Visualization"],
+    fullDescription: "...",
+    conceptDescription: "...",
+    moodboardImages: [],
+    sketchImages: [],
+
+    ourStrategy: [],
+
+    audienceInsights: [
+      {
+        title: "Parent Persona",
+        description:
+          "Our most active B2C segment was Women aged 30–45 (68% of engagement), focusing on kids' upskilling and online tuition.",
+      },
+      {
+        title: "Investor Persona",
+        description:
+          "Franchise leads peaked among Men aged 35–50 from Tier 1 and Tier 2 cities seeking stable business opportunities.",
+      },
+      {
+        title: "Content Retention",
+        description:
+          "The Franchise Opportunity explainer video achieved an 8.5% completion rate, indicating strong investor intent.",
+      },
+    ],
+
     processImages: [
       "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200",
       "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200",
-    ],
-  },
-  2: {
-    id: 2,
-    title: "Luxe E-Commerce Platform",
-    description:
-      "Premium shopping experience with immersive 3D product views and seamless checkout flow.",
-    category: "websites",
-    imageUrl:
-      "https://images.unsplash.com/photo-1644057501622-dfa7dd26dbfb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBlY29tbWVyY2UlMjB3ZWJzaXRlfGVufDF8fHx8MTc2NTk5MzIwNnww&ixlib=rb-4.1.0&q=80&w=1080",
-    client: "Luxe Retail Group",
-    year: "2024",
-    services: ["E-Commerce Design", "3D Integration", "Brand Strategy"],
-    fullDescription:
-      "Luxe E-Commerce Platform sets a new standard for online luxury retail. We created an immersive shopping experience that rivals in-store visits through advanced 3D product visualization, augmented reality try-ons, and a frictionless checkout process designed for high-value transactions.",
-    conceptDescription:
-      "Our vision was to translate the exclusivity and sophistication of luxury retail into the digital realm. Every interaction is crafted to feel premium—from the smooth animations to the carefully curated product presentations. We wanted customers to feel the same excitement online as they would walking into a flagship boutique.",
-    moodboardImages: [
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800",
-      "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800",
-      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800",
-      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800",
-    ],
-    sketchImages: [
-      "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800",
-      "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800",
-      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800",
-    ],
-    processDescription:
-      "The design process emphasized creating a sense of luxury through minimalism and attention to detail. We collaborated with 3D artists to develop photorealistic product models and implemented advanced rendering techniques. User testing focused on ensuring the platform felt intuitive yet sophisticated.",
-    processImages: [
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200",
-      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1200",
     ],
   },
   3: {
@@ -104,9 +150,11 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     category: "branding",
     imageUrl:
       "https://images.unsplash.com/photo-1548094990-c16ca90f1f0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFuZGluZyUyMGRlc2lnbnxlbnwxfHx8fDE3NjU5ODQwMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    impactImage: Nakearstats,
     client: "Velocity Technologies",
     year: "2024",
     services: ["Brand Strategy", "Visual Identity", "Marketing Collateral"],
+    ourStrategy: [],
     fullDescription:
       "Velocity's brand identity captures the essence of speed, innovation, and forward-thinking technology. We developed a comprehensive visual system that includes logo design, color palette, typography, iconography, and brand guidelines. The identity system is designed to scale across all touchpoints—from digital platforms to physical merchandise.",
     conceptDescription:
@@ -137,10 +185,12 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     category: "applications",
     imageUrl:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1080",
+    impactImage: Nakearstats,
     videoUrl: undefined,
     client: "Client Name",
     year: "2024",
     services: ["UI/UX Design", "Development", "Brand Strategy"],
+    ourStrategy: [],
     fullDescription:
       "Add your project overview here. Describe the challenge, objectives, and what makes this project unique.",
     conceptDescription:
@@ -173,10 +223,12 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     category: "applications",
     imageUrl:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1080",
+    impactImage: Nakearstats,
     videoUrl: undefined,
     client: "Client Name",
     year: "2024",
     services: ["UI/UX Design", "Development", "Brand Strategy"],
+    ourStrategy: [],
     fullDescription:
       "Add your project overview here. Describe the challenge, objectives, and what makes this project unique.",
     conceptDescription:
@@ -208,10 +260,12 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
       "Scaling a premium formal wear brand through lifestyle storytelling and mobile-first optimization.",
     category: "branding",
     imageUrl: Shirt,
+    impactImage: Nakearstats,
     videoUrl: Video1,
     client: "Nakear",
     year: "2024",
     services: ["Performance Marketing", "UI/UX Optimization", "Brand Strategy"],
+    ourStrategy: [],
     fullDescription:
       "Nakear, a premium formal wear brand specializing in high-quality shirts, faced the challenge of scaling in a crowded fashion market. The goal was to build a sustainable 4.0× ROAS by transitioning from generic product images to lifestyle-driven storytelling and optimizing the website's UI/UX for a frictionless mobile checkout.",
     conceptDescription: `
@@ -219,10 +273,10 @@ Catalog Sales & DPA:
 We implemented Dynamic Product Ads (DPA) that automatically retargeted website visitors with the exact shirt they viewed, significantly lowering the Cost Per Acquisition (CPA).
 
 Fabric-First Creative:
-Since formal wear is all about texture and fit, we produced high-fidelity video ads highlighting fabric breathability, drape, and tailoring—achieving a 24% hook rate among working professionals.
+Formal wear is about texture. We produced high-fidelity video ads focusing on the fabric’s breathability and fit, achieving a 24% Hook Rate among professional men.
 
 Conversion Rate Optimization (CRO):
-We redesigned mobile product pages with Quick Buy CTAs, improved size guidance, and trust badges, resulting in a 35% increase in Add-to-Cart (ATC) rates.
+We redesigned the mobile product pages to include "Quick Buy" buttons and trust badges, leading to a 35% increase in Add-to-Cart (ATC) rates.
 `,
     moodboardImages: [
       "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800",
@@ -237,8 +291,9 @@ We redesigned mobile product pages with Quick Buy CTAs, improved size guidance, 
     ],
     processDescription:
       "The Corporate Professional: Our primary converters were Men aged 24–44 (82% of revenue) residing in Tier 1 cities (Bengaluru, Mumbai, Delhi). Shopping Behavior: 92% of all purchases occurred on Mobile devices, confirming the importance of our Mobile-First UI/UX strategy. Peak Engagement: Ads performed best between 7:00 PM and 11:00 PM, aligning with the after-office scrolling habits of our target audience.",
-    processImages: [Nakone, Naktwo, Nakthree, Nakfour],
+    processImages: [Greenone, Greentwo, Greenthree, Greenfour],
   },
+
   7: {
     id: 7,
     title: "Project 7",
@@ -247,12 +302,14 @@ We redesigned mobile product pages with Quick Buy CTAs, improved size guidance, 
     category: "applications",
     imageUrl:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1080",
+    impactImage: Nakearstats,
     videoUrl: Video2,
     client: "Client Name",
     year: "2024",
     services: ["UI/UX Design", "Development", "Brand Strategy"],
+    ourStrategy: [],
     fullDescription:
-      "Add your project overview here. Describe the challenge, objectives, and what makes this project unique.",
+      "Nakear, a premium formal wear brand specializing in high-quality shirts, faced the challenge of scaling in a crowded fashion market. The goal was to build a sustainable $4.0 × ROAS by transitioning from generic product images to lifestyle-driven storytelling and optimizing the website's UI/UX for a frictionless mobile checkout.",
     conceptDescription:
       "Add your strategy details here with subsections if needed.",
     moodboardImages: [
@@ -266,15 +323,26 @@ We redesigned mobile product pages with Quick Buy CTAs, improved size guidance, 
       "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800",
       "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800",
     ],
-    processDescription:
-      "Add your audience insights or process description here.",
-    processImages: [
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200",
-      "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200",
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200",
-      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1200",
+    audienceInsights: [
+      {
+        title: "Corporate Professional",
+        description:
+          "Our primary converters were Men aged 24–44 (82% of revenue) residing in Tier-1 cities such as Bengaluru, Mumbai, and Delhi.",
+      },
+      {
+        title: "Shopping Behavior",
+        description:
+          "92% of all purchases occurred on mobile devices, reinforcing the importance of a Mobile-First UI/UX strategy.",
+      },
+      {
+        title: "Peak Engagement",
+        description:
+          "Ads performed best between 7:00 PM and 11:00 PM, aligning with after-office browsing and shopping behavior.",
+      },
     ],
+    processImages: [Nakone, Naktwo, Nakthree, Nakfour],
   },
+
   8: {
     id: 8,
     title: "Project 8",
@@ -283,10 +351,12 @@ We redesigned mobile product pages with Quick Buy CTAs, improved size guidance, 
     category: "applications",
     imageUrl:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1080",
+    impactImage: Nakearstats,
     videoUrl: undefined,
     client: "Client Name",
     year: "2024",
     services: ["UI/UX Design", "Development", "Brand Strategy"],
+    ourStrategy: [],
     fullDescription:
       "Add your project overview here. Describe the challenge, objectives, and what makes this project unique.",
     conceptDescription:
@@ -319,10 +389,12 @@ We redesigned mobile product pages with Quick Buy CTAs, improved size guidance, 
     category: "applications",
     imageUrl:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1080",
+    impactImage: Nakearstats,
     videoUrl: undefined,
     client: "Client Name",
     year: "2024",
     services: ["UI/UX Design", "Development", "Brand Strategy"],
+    ourStrategy: [],
     fullDescription:
       "Add your project overview here. Describe the challenge, objectives, and what makes this project unique.",
     conceptDescription:
@@ -355,10 +427,12 @@ We redesigned mobile product pages with Quick Buy CTAs, improved size guidance, 
     category: "applications",
     imageUrl:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1080",
+    impactImage: Nakearstats,
     videoUrl: undefined,
     client: "Client Name",
     year: "2024",
     services: ["UI/UX Design", "Development", "Brand Strategy"],
+    ourStrategy: [],
     fullDescription:
       "Add your project overview here. Describe the challenge, objectives, and what makes this project unique.",
     conceptDescription:
@@ -485,7 +559,7 @@ export function ProjectDetail() {
           </motion.div>
 
           {/* Our Strategy */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -530,83 +604,124 @@ export function ProjectDetail() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </motion.div> */}
+          {project.ourStrategy && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="max-w-7xl mx-auto mb-20"
+            >
+              <h2 className="text-3xl md:text-5xl text-white mb-8">
+                Our Strategy
+              </h2>
+
+              <div className="space-y-6 max-w-6xl w-full mb-12">
+                {project.ourStrategy.map((item, index) => (
+                  <p
+                    key={index}
+                    className="text-gray-400 text-lg leading-relaxed"
+                  >
+                    <span className="text-white font-semibold">
+                      {item.title}:
+                    </span>{" "}
+                    {item.description}
+                  </p>
+                ))}
+              </div>
+            </motion.div>
+          )}
 
           {/* Our Impacts */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="max-w-7xl mx-auto mb-32"
-          >
-            <h2 className="text-3xl md:text-5xl text-white mb-12">
-              Our Impacts
-            </h2>
-
+          {project.impactImage && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="
-      relative
-      w-full
-      max-h-[200px]
-      h-[160px]
-      sm:h-[180px]
-      md:h-[200px]
-      rounded-3xl
-      overflow-hidden
-      group
-    "
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="max-w-7xl mx-auto mb-32"
             >
-              <img
-                src={project.sketchImages[0]}
-                alt="Sketches & Wireframes"
+              <h2 className="text-3xl md:text-5xl text-white mb-12">
+                Our Impacts
+              </h2>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
                 className="
-        w-full
-        h-full
-        object-cover
-        transition-transform
-        duration-700
-        group-hover:scale-105
-      "
-              />
+                relative
+                w-full
+                max-h-[200px]
+                h-[160px]
+                sm:h-[180px]
+                md:h-[200px]
+                rounded-3xl
+                overflow-hidden
+                group
+              "
+              >
+                <img
+                  src={project.impactImage}
+                  alt={`${project.title} Impact`}
+                  className="
+                  w-full
+                  h-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  group-hover:scale-105
+                "
+                />
+              </motion.div>
             </motion.div>
-          </motion.div>
+          )}
 
           {/* Audience Insights */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="max-w-7xl mx-auto mb-20"
-          >
-            <h2 className="text-3xl md:text-5xl text-white mb-8">
-              Audience Insights
-            </h2>
-            <p className="text-gray-400 text-lg leading-relaxed mb-12">
-              {project.processDescription}
-            </p>
+          {project.audienceInsights && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="max-w-7xl mx-auto mb-20"
+            >
+              <h2 className="text-3xl md:text-5xl text-white mb-8">
+                Audience Insights
+              </h2>
 
-            {/* Process Images */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {project.processImages.map((image, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                  className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer"
-                >
-                  <img
-                    src={image}
-                    alt={`Process ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+              <div className="space-y-6 max-w-6xl w-full mb-12">
+                {project.audienceInsights.map((item, index) => (
+                  <p
+                    key={index}
+                    className="text-gray-400 text-lg leading-relaxed"
+                  >
+                    <span className="text-white font-semibold">
+                      {item.title}:
+                    </span>{" "}
+                    {item.description}
+                  </p>
+                ))}
+              </div>
+
+              {/* Process Images */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {project.processImages.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                    className="relative aspect-video rounded-2xl overflow-hidden group"
+                  >
+                    <img
+                      src={image}
+                      alt={`Process ${index + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
 
           {/* Next Project CTA */}
           <motion.div

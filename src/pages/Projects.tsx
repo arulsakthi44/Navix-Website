@@ -22,9 +22,9 @@ interface Project {
 const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Nakear",
-    description: "Nakear, a premium formal wear brand, scaled in a competitive market by shifting to lifestyle-driven storytelling.",
-    category: "applications",
+    title: "i2Global",
+    description: "i2Global needed a unified digital presence to scale student enrollments and attract franchise partners, serving both parents and investors effectively.",
+    category: "Performance Marketing",
     imageUrl: Shivam
   },
   {
