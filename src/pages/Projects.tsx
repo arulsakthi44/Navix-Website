@@ -71,27 +71,27 @@ const PROJECTS: Project[] = [
     category: "Performance Marketing",
     imageUrl: Masalalogo
   },
-  {
-    id: 8,
-    title: "Pulse Analytics Platform",
-    description: "Advanced business intelligence dashboard with customizable widgets and data visualization.",
-    category: "applications",
-    imageUrl: "https://images.unsplash.com/photo-1761593280919-766a4acbcfca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXNoYm9hcmQlMjBpbnRlcmZhY2UlMjBkZXNpZ258ZW58MXx8fHwxNzY1ODg3MDYyfDA&ixlib=rb-4.1.0&q=80&w=1080"
-  },
-  {
-    id: 9,
-    title: "Zenith Mobile Experience",
-    description: "Intuitive mobile app interface with gesture controls and seamless user experience design.",
-    category: "applications",
-    imageUrl: "https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzY1OTI0MzQ5fDA&ixlib=rb-4.1.0&q=80&w=1080"
-  },
-  {
-    id: 10,
-    title: "Vertex Design System",
-    description: "Modern website with cutting-edge design patterns and responsive architecture.",
-    category: "websites",
-    imageUrl: "https://images.unsplash.com/photo-1676792519027-7c42006d7b4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWJzaXRlJTIwZGVzaWdufGVufDF8fHx8MTc2NTk3NTQ5NHww&ixlib=rb-4.1.0&q=80&w=1080"
-  }
+  // {
+  //   id: 8,
+  //   title: "Pulse Analytics Platform",
+  //   description: "Advanced business intelligence dashboard with customizable widgets and data visualization.",
+  //   category: "applications",
+  //   imageUrl: "https://images.unsplash.com/photo-1761593280919-766a4acbcfca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXNoYm9hcmQlMjBpbnRlcmZhY2UlMjBkZXNpZ258ZW58MXx8fHwxNzY1ODg3MDYyfDA&ixlib=rb-4.1.0&q=80&w=1080"
+  // },
+  // {
+  //   id: 9,
+  //   title: "Zenith Mobile Experience",
+  //   description: "Intuitive mobile app interface with gesture controls and seamless user experience design.",
+  //   category: "applications",
+  //   imageUrl: "https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzY1OTI0MzQ5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+  // },
+  // {
+  //   id: 10,
+  //   title: "Vertex Design System",
+  //   description: "Modern website with cutting-edge design patterns and responsive architecture.",
+  //   category: "websites",
+  //   imageUrl: "https://images.unsplash.com/photo-1676792519027-7c42006d7b4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3ZWJzaXRlJTIwZGVzaWdufGVufDF8fHx8MTc2NTk3NTQ5NHww&ixlib=rb-4.1.0&q=80&w=1080"
+  // }
 ];
 
 export function Projects() {

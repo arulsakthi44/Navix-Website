@@ -28,50 +28,50 @@ const BASE_IMAGES: Omit<ImageData, 'id'>[] = [
   {
     src: Video1,
     alt: "vijayadhasami",
-    title: "Brand Evolution",
-    description: "A complete brand transformation that increased market presence by 300%."
+    // title: "Brand Evolution",
+    // description: "A complete brand transformation that increased market presence by 300%."
   },
   {
     src: Video2,
     alt: "Tutions AD I2Global",
-    title: "Digital Excellence",
-    description: "Award-winning digital campaign with 10M+ impressions."
+    // title: "Digital Excellence",
+    // description: "Award-winning digital campaign with 10M+ impressions."
   },
   {
     src: Video3,
     alt: "Restaurant Dravidam",
-    title: "Social Impact",
-    description: "Viral social media strategy generating 500K+ engagements."
+    // title: "Social Impact",
+    // description: "Viral social media strategy generating 500K+ engagements."
   },
   {
     src: Video4,
     alt: "Brand Nakear AD",
-    title: "Visual Storytelling",
-    description: "Cinematic content that drove 250% conversion increase."
+    // title: "Visual Storytelling",
+    // description: "Cinematic content that drove 250% conversion increase."
   },
   {
     src: Video5,
     alt: " AD PPLSYNC",
-    title: "Creative Direction",
-    description: "Bold creative approach that redefined industry standards."
+    // title: "Creative Direction",
+    // description: "Bold creative approach that redefined industry standards."
   },
   {
     src: Video6,
     alt: "Ai rental AD Brand Kutir",
-    title: "Marketing Innovation",
-    description: "Groundbreaking campaign that achieved 400% ROI."
+    // title: "Marketing Innovation",
+    // description: "Groundbreaking campaign that achieved 400% ROI."
   },
   {
     src: Video7,
     alt: "AD Brand Globbie",
-    title: "Brand Experience",
-    description: "Immersive brand experience reaching 2M+ consumers."
+    // title: "Brand Experience",
+    // description: "Immersive brand experience reaching 2M+ consumers."
   },
   {
     src: Video8,
     alt: "Video Brand Globbie",
-    title: "Content Strategy",
-    description: "Data-driven content strategy with 85% engagement rate."
+    // title: "Content Strategy",
+    // description: "Data-driven content strategy with 85% engagement rate."
   }
 ];
 

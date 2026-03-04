@@ -1075,8 +1075,8 @@ export function ProjectDetail() {
               </h2>
 
               {/* Delivery Videos */}
-              {project.deliveryVideos && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              {/* {project.deliveryVideos && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-12 justify-items-center">
                   {project.deliveryVideos.map((video, index) => (
                     <motion.video
                       key={index}
@@ -1084,15 +1084,35 @@ export function ProjectDetail() {
                       controls
                       muted
                       playsInline
-                      className="w-full rounded-2xl object-cover"
+                      className="w-full max-w-[380px] h-[240px] aspect-[4/3] rounded-2xl object-cover"
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                     />
                   ))}
                 </div>
+              )} */}
+              {project.deliveryVideos && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl">
+                  {project.deliveryVideos.map((video, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="flex justify-start"
+                    >
+                      <video
+                        src={video}
+                        controls
+                        muted
+                        playsInline
+                        className="w-full max-w-sm h-auto rounded-2xl object-cover"
+                      />
+                    </motion.div>
+                  ))}
+                </div>
               )}
-
               {/* <div className="space-y-6 max-w-6xl w-full mb-12">
                 {project.audienceInsights.map((item, index) => (
                   <p
@@ -1115,7 +1135,8 @@ export function ProjectDetail() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
-                    className="relative aspect-video rounded-2xl overflow-hidden group"
+                    // className="relative aspect-video rounded-2xl overflow-hidden group"
+                    className="relative h-[400px] rounded-2xl overflow-hidden group"
                   >
                     <img
                       src={image}
