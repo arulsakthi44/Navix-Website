@@ -209,7 +209,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     moodboardImages: [],
     sketchImages: [],
     resultImage: Pplsresult,
-    deliveryVideos: [Pplsync1, Pplsync2],
+    deliveryVideos: ["gEicDNM51NQ", "C5QmzX6idC4"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -282,7 +282,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     moodboardImages: [],
     sketchImages: [],
     resultImage: Pplsresult,
-    deliveryVideos: [Dravidam1, Dravidam2],
+    deliveryVideos: ["_hgCZjSOR0g", "JK7afoDIt_s"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -357,7 +357,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     moodboardImages: [],
     sketchImages: [],
     resultImage: Kutirimpact,
-    deliveryVideos: [Kutirone, Kutirtwo],
+    deliveryVideos: ["ZDEi5EmQDHg", "AFWvw3MH9DI"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -433,7 +433,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     moodboardImages: [],
     sketchImages: [],
     resultImage: Csimpact,
-    deliveryVideos: [Csvideo],
+    deliveryVideos: ["7jJB1SIpSpA"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -503,7 +503,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     moodboardImages: [],
     sketchImages: [],
     resultImage: Kutirimpact,
-    deliveryVideos: [],
+    deliveryVideos: ["jcuhKC6WATo"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -538,7 +538,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     clientImpact: [
       {
         description:
-          "By combining premium creative execution with data-driven performance optimization, Navix Studio transformed Nakear into a scalable, high-growth D2C brand—building a reliable sales engine that delivers consistent returns.",
+          "By combining premium creative execution with data-driven performance optimization, Navix Media transformed Nakear into a scalable, high-growth D2C brand—building a reliable sales engine that delivers consistent returns.",
       },
     ],
 
@@ -578,7 +578,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     moodboardImages: [],
     sketchImages: [],
     resultImage: Masalaimpact,
-    deliveryVideos: [Masalavideo],
+    deliveryVideos: ["FWm1J1PAOqI"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -1094,7 +1094,7 @@ export function ProjectDetail() {
               )} */}
               {project.deliveryVideos && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl">
-                  {project.deliveryVideos.map((video, index) => (
+                  {project.deliveryVideos.map((youtubeId, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 30 }}
@@ -1102,13 +1102,15 @@ export function ProjectDetail() {
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       className="flex justify-start"
                     >
-                      <video
-                        src={video}
-                        controls
-                        muted
-                        playsInline
-                        className="w-full max-w-sm h-auto rounded-2xl object-cover"
-                      />
+                      <div className="w-full max-w-sm rounded-2xl overflow-hidden">
+                        <iframe
+                          src={`https://www.youtube.com/embed/${youtubeId}?rel=0&modestbranding=1`}
+                          title={`Video ${index + 1}`}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="w-full h-[600px] rounded-2xl"
+                        />
+                      </div>
                     </motion.div>
                   ))}
                 </div>

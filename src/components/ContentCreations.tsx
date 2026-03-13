@@ -283,10 +283,10 @@ import { Play } from "lucide-react";
 import React, { useState } from "react";
 
 const CONTENT_ITEMS = [
-  { id: 1, youtubeId: "guMczi9K-po" },
-  { id: 2, youtubeId: "guMczi9K-po" },
-  { id: 3, youtubeId: "guMczi9K-po" },
-  { id: 4, youtubeId: "guMczi9K-po" },
+  { id: 1, youtubeId: "1VrlQ7egRNc" },
+  { id: 2, youtubeId: "1lVpn3Mczqk" },
+  { id: 3, youtubeId: "oNm4p4spx1k" },
+  { id: 4, youtubeId: "FWm1J1PAOqI" },
 ];
 
 interface VideoModalProps {
@@ -295,7 +295,15 @@ interface VideoModalProps {
 }
 
 function VideoModal({ youtubeId, onClose }: VideoModalProps) {
+  const [replayKey, setReplayKey] = useState(0);
+
+  // Reset replay key when video changes
+  React.useEffect(() => {
+    setReplayKey(0);
+  }, [youtubeId]);
+
   if (!youtubeId) return null;
+
   const getEmbedUrl = (idOrUrl: string) => {
     try {
       // If a full URL is provided, extract the video id.
@@ -315,11 +323,21 @@ function VideoModal({ youtubeId, onClose }: VideoModalProps) {
     return `https://www.youtube.com/embed/${idOrUrl}`;
   };
 
-  const src = `${getEmbedUrl(youtubeId)}?rel=0&modestbranding=1&playsinline=1&controls=1`;
+  const src = `${getEmbedUrl(youtubeId)}?rel=0&modestbranding=1&playsinline=1&controls=1&autoplay=1`;
+
+  const handleReplay = () => {
+    setReplayKey(prev => prev + 1);
+  };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-      <div className="relative w-[600px] h-[800px] bg-black rounded-2xl overflow-hidden shadow-2xl">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+      onClick={onClose}
+    >
+      <div 
+        className="relative w-[600px] h-[800px] bg-black rounded-2xl overflow-hidden shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
 
         {/* Close Button */}
         <button
@@ -329,8 +347,17 @@ function VideoModal({ youtubeId, onClose }: VideoModalProps) {
           ✕
         </button>
 
+        {/* Replay Button */}
+        <button
+          onClick={handleReplay}
+          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 bg-white/90 text-black px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-white transition-all shadow-lg"
+        >
+          <Play className="w-5 h-5 fill-black" />
+          Play Again
+        </button>
+
         <iframe
-          key={youtubeId}
+          key={`${youtubeId}-${replayKey}`}
           className="w-full h-full"
           src={src}
           title="YouTube video player"
@@ -365,7 +392,7 @@ export function ContentCreations() {
             <div
               key={item.id}
               className="relative w-full h-[600px] rounded-2xl overflow-hidden cursor-pointer group bg-black"
-              onClick={() => setActiveVideo(item.youtubeId)}
+              onClick={() => setActiveVideo(item.youtubeId)} 
             >
               <img
                 src={`https://img.youtube.com/vi/${item.youtubeId}/maxresdefault.jpg`}

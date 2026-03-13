@@ -5,7 +5,7 @@ const TESTIMONIALS = [
     {
         text: "Navix Ai has completely transformed how we approach data analysis. The insights we get are deeper and faster than ever before. It's truly a game-changer for our strategic planning.",
         name: "Arul",
-        role: "CEO of Navix Studio"
+        role: "CEO of Navix Media"
     },
     {
         text: "The scalability of this platform is unmatched. We went from processing thousands to millions of data points overnight without a hitch. The support team is also world-class.",
