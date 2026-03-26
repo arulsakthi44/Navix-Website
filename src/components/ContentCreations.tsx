@@ -1,4 +1,4 @@
-// // import { motion } from 'motion/react';
+﻿// // import { motion } from 'motion/react';
 // import { Play } from 'lucide-react';
 // import React, { useState, useRef, useEffect } from 'react';
 
@@ -295,15 +295,7 @@ interface VideoModalProps {
 }
 
 function VideoModal({ youtubeId, onClose }: VideoModalProps) {
-  const [replayKey, setReplayKey] = useState(0);
-
-  // Reset replay key when video changes
-  React.useEffect(() => {
-    setReplayKey(0);
-  }, [youtubeId]);
-
   if (!youtubeId) return null;
-
   const getEmbedUrl = (idOrUrl: string) => {
     try {
       // If a full URL is provided, extract the video id.
@@ -323,21 +315,11 @@ function VideoModal({ youtubeId, onClose }: VideoModalProps) {
     return `https://www.youtube.com/embed/${idOrUrl}`;
   };
 
-  const src = `${getEmbedUrl(youtubeId)}?rel=0&modestbranding=1&playsinline=1&controls=1&autoplay=1`;
-
-  const handleReplay = () => {
-    setReplayKey(prev => prev + 1);
-  };
+  const src = `${getEmbedUrl(youtubeId)}?rel=0&modestbranding=1&playsinline=1&controls=1`;
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
-      onClick={onClose}
-    >
-      <div 
-        className="relative w-[600px] h-[800px] bg-black rounded-2xl overflow-hidden shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
+      <div className="relative w-[600px] h-[800px] bg-black rounded-2xl overflow-hidden shadow-2xl">
 
         {/* Close Button */}
         <button
@@ -347,17 +329,8 @@ function VideoModal({ youtubeId, onClose }: VideoModalProps) {
           ✕
         </button>
 
-        {/* Replay Button */}
-        <button
-          onClick={handleReplay}
-          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 bg-white/90 text-black px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-white transition-all shadow-lg"
-        >
-          <Play className="w-5 h-5 fill-black" />
-          Play Again
-        </button>
-
         <iframe
-          key={`${youtubeId}-${replayKey}`}
+          key={youtubeId}
           className="w-full h-full"
           src={src}
           title="YouTube video player"

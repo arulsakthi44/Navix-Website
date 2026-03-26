@@ -144,7 +144,7 @@ export function Masterpieces() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl text-white mb-4">
-            Our Recent Masterpiece Works
+            Our Masterpieces
           </h2>
         </motion.div>
 
@@ -190,7 +190,7 @@ export function Masterpieces() {
                 backgroundImage: "linear-gradient(100.351deg, rgb(0, 0, 0) 14.842%, rgb(95, 48, 20) 25.921%, rgb(172, 76, 21) 37%, rgb(198, 198, 198) 51.41%, rgb(32, 86, 174) 68.977%, rgb(0, 0, 0) 89.412%)"
               }}
             >
-              See More
+              Our Projects
             </motion.button>
           </Link>
         </motion.div>

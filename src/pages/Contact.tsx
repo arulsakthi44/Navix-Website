@@ -92,13 +92,13 @@ export function Contact() {
 
                 {/* Email Address */}
                 <a
-                  href="mailto:navixmedia.in@gmail.com"
+                  href="mailto:navixstudios@gmail.com"
                   className="text-white text-2xl md:text-3xl inline-block transition-all duration-300 break-all bg-gradient-to-r from-[#EE6A1F] to-[#1A70FF] bg-clip-text hover:text-transparent"
                   style={{
                     WebkitBackgroundClip: 'text',
                   }}
                 >
-                  navixmedia.in@gmail.com
+                  navixstudios@gmail.com
                 </a>
               </motion.div>
             </div>
