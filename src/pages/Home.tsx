@@ -5,6 +5,7 @@ import { ContentCreations } from '../components/ContentCreations';
 import { Results } from '../components/Results';
 import { Services } from '../components/Services';
 import { GrowthProcess } from '../components/GrowthProcess';
+import { Testimonials } from '../components/Testimonials';
 import { ClientLogos } from '../components/ClientLogos';
 import { BottomCTA } from '../components/BottomCTA';
 import { Footer } from '../components/Footer';
@@ -36,6 +37,7 @@ export function Home() {
         <Results />
         <Services />
         <GrowthProcess />
+        <Testimonials />
         <ClientLogos />
         <BottomCTA />
         <Footer />

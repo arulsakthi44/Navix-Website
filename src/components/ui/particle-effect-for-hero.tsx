@@ -119,21 +119,24 @@ export const AntiGravityCanvas: React.FC = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // --- Background Effects ---
-    
+
     // 1. Pulsating Radial Glow
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     const pulseSpeed = 0.0008;
-    // Oscillates between 0.05 and 0.12 opacity
-    const pulseOpacity = Math.sin(time * pulseSpeed) * 0.035 + 0.085; 
-    
+    const isMobileCanvas = canvas.width < 768;
+    // Desktop: full pulsating glow. Mobile: subtle fixed hint of blue
+    const pulseOpacity = isMobileCanvas
+      ? 0.06
+      : Math.sin(time * pulseSpeed) * 0.035 + 0.085;
+
     const gradient = ctx.createRadialGradient(
-        centerX, centerY, 0, 
+        centerX, centerY, 0,
         centerX, centerY, Math.max(canvas.width, canvas.height) * 0.7
     );
-    gradient.addColorStop(0, `rgba(66, 133, 244, ${pulseOpacity})`); // Faint Google Blue
+    gradient.addColorStop(0, `rgba(66, 133, 244, ${pulseOpacity})`);
     gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-    
+
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -369,11 +372,7 @@ export const AntiGravityCanvas: React.FC = () => {
     >
       <canvas ref={canvasRef} className="block w-full h-full" />
       
-      {/* Debug Info Overlay (Hidden in production usually, but cool for tech demos) */}
-      <div className="absolute bottom-4 right-4 pointer-events-none text-xs text-white/20 font-mono text-right">
-        <p>{debugInfo.count} entities</p>
-        <p>{debugInfo.fps} FPS</p>
-      </div>
+
     </div>
   );
 };

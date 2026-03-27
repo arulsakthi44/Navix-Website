@@ -60,9 +60,11 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl text-white mb-20"
+          className="text-5xl md:text-6xl text-white mb-8"
         >
-          Our Services
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Our Services
+            </h2>
         </motion.h2>
 
         {/* Service Accordions */}
