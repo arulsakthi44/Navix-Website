@@ -78,7 +78,7 @@ export function Footer() {
             </motion.div>
 
             <p className="text-white/30 text-xs pt-2 text-center">
-              © 2026 NaViX. All rights reserved.
+              © 2026 NaViX Media. All rights reserved.
             </p>
           </div>
 
@@ -113,7 +113,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-white/90 tracking-wide text-xl">Get In Touch</h3>
             <p className="bg-gradient-to-r from-[#EE6A1F] to-[#1A70FF] bg-clip-text text-transparent hover:opacity-80 transition-opacity cursor-pointer">
-              navixstudios@gmail.com
+              navixmedia.in@gmail.com
             </p>
 
             <p className="bg-gradient-to-r from-[#EE6A1F] to-[#1A70FF] bg-clip-text text-transparent hover:opacity-80 transition-opacity cursor-pointer">
@@ -122,17 +122,16 @@ export function Footer() {
 
             {/* Social Links */}
             <div className="flex gap-4 pt-2">
-              {['Instagram', /* 'LinkedIn' */].map((social) => (
-                <motion.a
-                  key={social}
-                  href="#"
-                  className="text-white/50 hover:text-[#4A8CFF] transition-colors text-sm"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {social}
-                </motion.a>
-              ))}
+              <motion.a
+                href="https://www.instagram.com/navix._media?igsh=MWhreTg0cTluajlp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/50 hover:text-[#4A8CFF] transition-colors text-sm"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Instagram
+              </motion.a>
             </div>
           </div>
         </div>

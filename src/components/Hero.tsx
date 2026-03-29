@@ -87,6 +87,26 @@ export function Hero() {
 
             {/* Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+
+            {/* Animating tagline - bottom center of video */}
+            <style>{`
+              @keyframes shimmer {
+                0% { background-position: 200% center; }
+                100% { background-position: -200% center; }
+              }
+              .shimmer-text {
+                background: linear-gradient(to right, #868686 0%, #868686 40%, #fff 50%, #868686 60%, #868686 100%);
+                background-size: 200% auto;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: shimmer 4.5s linear infinite;
+                font-weight: 700;
+              }
+            `}</style>
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center whitespace-nowrap text-[18px] z-10">
+              <span className="shimmer-text">Navigate • Visualise • Xelerate</span>
+            </div>
             
             {/* Glow Effect */}
             {/* <div className="absolute -inset-1 bg-gradient-to-r from-[#EE6A1F] to-[#1A70FF] rounded-2xl opacity-20 blur-xl -z-10" /> */}

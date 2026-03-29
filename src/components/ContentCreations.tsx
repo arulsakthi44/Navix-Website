@@ -279,64 +279,76 @@
 // //   );
 // // }
 
-import { Play } from "lucide-react";
-import React, { useState } from "react";
+import { Play, X, Maximize } from "lucide-react";
+import { useState } from "react";
 
 const CONTENT_ITEMS = [
-  { id: 1, youtubeId: "1VrlQ7egRNc" },
-  { id: 2, youtubeId: "1lVpn3Mczqk" },
-  { id: 3, youtubeId: "oNm4p4spx1k" },
-  { id: 4, youtubeId: "FWm1J1PAOqI" },
+  { id: 1, youtubeUrl: "https://youtube.com/shorts/1VrlQ7egRNc" },
+  { id: 2, youtubeUrl: "https://youtube.com/shorts/1lVpn3Mczqk" },
+  { id: 3, youtubeUrl: "https://youtube.com/shorts/oNm4p4spx1k" },
+  { id: 4, youtubeUrl: "https://youtube.com/shorts/FWm1J1PAOqI" },
 ];
 
+const getYoutubeId = (url: string): string => {
+  const match = url.match(/youtube\.com\/shorts\/([^?]+)/);
+  return match ? match[1] : '';
+};
+
+const convertToEmbedUrl = (url: string): string => {
+  const id = getYoutubeId(url);
+  return `https://www.youtube.com/embed/${id}?autoplay=1`;
+};
+
+const convertToWatchUrl = (url: string): string => {
+  const id = getYoutubeId(url);
+  return `https://www.youtube.com/watch?v=${id}`;
+};
+
 interface VideoModalProps {
-  youtubeId: string | null;
+  videoUrl: string | null;
   onClose: () => void;
 }
 
-function VideoModal({ youtubeId, onClose }: VideoModalProps) {
-  if (!youtubeId) return null;
-  const getEmbedUrl = (idOrUrl: string) => {
-    try {
-      // If a full URL is provided, extract the video id.
-      if (idOrUrl.startsWith('http')) {
-        const u = new URL(idOrUrl);
-        // youtube.com/watch?v=ID
-        if (u.searchParams.has('v')) return `https://www.youtube.com/embed/${u.searchParams.get('v')}`;
-        // youtu.be/ID or /embed/ID
-        const pathname = u.pathname.split('/').filter(Boolean);
-        if (pathname.length) return `https://www.youtube.com/embed/${pathname[pathname.length - 1]}`;
-      }
-    } catch (e) {
-      // fallthrough to treat input as ID
-    }
-
-    // treat the input as an ID
-    return `https://www.youtube.com/embed/${idOrUrl}`;
-  };
-
-  const src = `${getEmbedUrl(youtubeId)}?rel=0&modestbranding=1&playsinline=1&controls=1`;
+function VideoModal({ videoUrl, onClose }: VideoModalProps) {
+  if (!videoUrl) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-      <div className="relative w-[600px] h-[800px] bg-black rounded-2xl overflow-hidden shadow-2xl">
-
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-3 right-3 z-20 bg-white/20 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/30"
-        >
-          ✕
-        </button>
-
-        <iframe
-          key={youtubeId}
-          className="w-full h-full"
-          src={src}
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      onClick={onClose}
+      style={{ animation: 'fadeIn 0.3s ease-out' }}
+    >
+      <div
+        className="bg-zinc-900/95 rounded-xl max-w-md w-full overflow-hidden border border-white/10 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+        style={{ animation: 'scaleIn 0.3s ease-out' }}
+      >
+        <div className="relative bg-black" style={{ aspectRatio: '9/16' }}>
+          <iframe
+            key={videoUrl}
+            src={convertToEmbedUrl(videoUrl)}
+            className="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            allowFullScreen
+            title="YouTube video player"
+          />
+          <div className="absolute top-2 right-2 flex gap-2">
+            <button
+              onClick={() => window.open(convertToWatchUrl(videoUrl), '_blank')}
+              className="w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-sm"
+              title="Open in fullscreen"
+            >
+              <Maximize size={16} />
+            </button>
+            <button
+              onClick={onClose}
+              className="w-8 h-8 bg-black/60 hover:bg-black/80 rounded-full text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-sm"
+              title="Close"
+            >
+              <X size={16} />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -346,53 +358,60 @@ export function ContentCreations() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
   return (
-    <section className="relative py-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <>
+      <style>{`
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scaleIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+      `}</style>
+      <section className="relative py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-        {/* Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Our Content Creations
-          </h2>
-          <p className="text-gray-400 text-lg">
-            Engaging short-form content that captures attention and drives results.
-          </p>
-        </div>
+          {/* Title */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Our Creations
+            </h2>
+            <p className="text-gray-400 text-lg">
+              Engaging short-form content that captures attention and drives results.
+            </p>
+          </div>
 
-        {/* Video Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-          {CONTENT_ITEMS.map((item) => (
-            <div
-              key={item.id}
-              className="relative w-full h-[600px] rounded-2xl overflow-hidden cursor-pointer group bg-black"
-              onClick={() => setActiveVideo(item.youtubeId)} 
-            >
-              <img
-                src={`https://img.youtube.com/vi/${item.youtubeId}/maxresdefault.jpg`}
-                alt={`Content ${item.id}`}
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  // Fallback to medium quality thumbnail if maxres doesn't exist
-                  (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${item.youtubeId}/hqdefault.jpg`;
-                }}
-              />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm border border-white/30 group-hover:scale-110 transition-transform">
-                  <Play className="w-6 h-6 text-white fill-white" />
+          {/* Video Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {CONTENT_ITEMS.map((item) => {
+              const thumbId = getYoutubeId(item.youtubeUrl);
+              return (
+                <div
+                  key={item.id}
+                  className="relative w-full rounded-2xl overflow-hidden cursor-pointer group bg-black"
+                  style={{ aspectRatio: '9/16' }}
+                  onClick={() => setActiveVideo(item.youtubeUrl)}
+                >
+                  <img
+                    src={`https://img.youtube.com/vi/${thumbId}/maxresdefault.jpg`}
+                    alt={`Content ${item.id}`}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${thumbId}/hqdefault.jpg`;
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-14 h-14 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-sm border border-white/30 group-hover:scale-110 transition-transform">
+                      <Play className="w-6 h-6 text-white fill-white" />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
 
-        {/* Modal */}
         <VideoModal
-          youtubeId={activeVideo}
+          videoUrl={activeVideo}
           onClose={() => setActiveVideo(null)}
         />
-
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

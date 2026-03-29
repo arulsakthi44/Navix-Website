@@ -4,6 +4,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft } from "lucide-react";
 
+import I2W from "../assets/i2w-result.png";
 import Schoolone from "../assets/i2g-1.png";
 import Schooltwo from "../assets/i2g-2.png";
 import Schoolthree from "../assets/i2g-3.png";
@@ -11,12 +12,9 @@ import Schoolfour from "../assets/i2g-4.png";
 import Schoolfive from "../assets/i2g-5.png";
 import Schoolsix from "../assets/i2g-6.png";
 
-// import Video1 from "../assets/videos/cs.mp4";
 import Video2 from "../assets/videos/nakear.mp4";
 import Shirt from "../assets/i2gbanner.png";
 import Resultsglobie from "../assets/results-globie.png";
-import Pplsync1 from "../assets/videos/ppl-sync-video1.mp4";
-import Pplsync2 from "../assets/videos/ppl-sync-video2.mp4";
 import Pplone from "../assets/Pplone.png";
 import Ppltwo from "../assets/Ppltwo.png";
 import Pplthree from "../assets/Pplthree.png";
@@ -24,30 +22,20 @@ import Pplfour from "../assets/Pplfour.png";
 import Pplfive from "../assets/Pplfive.png";
 
 import Dravibanner from "../assets/dravibanner.jpg";
-import Dravidam1 from "../assets/videos/dravidam1.mp4";
-import Dravidam2 from "../assets/videos/dravidam2.mp4";
+import Draviimpact from "../assets/dravi-impact.png";
 
 import Kutirbanner from "../assets/kutirbanner.jpg";
 import Resultkutir from "../assets/kutir-result.png";
 import Kutirimpact from "../assets/kutir-impacts.png";
-import Kutirone from "../assets/videos/kutir1.mp4";
-import Kutirtwo from "../assets/videos/kutir2.mp4";
 
 import Cs360 from "../assets/videos/cs.mp4";
 import Csimpact from "../assets/csresult.png";
-import Csvideo from "../assets/videos/csvideo.mp4";
 
 import Pplbanner from "../assets/pplbanner.png";
-import Pplimpact from "../assets/ppl-result.png";
-import Pplsresult from "../assets/ppls-result.png";
+import Pplimpact from "../assets/ppl-impact.png";
+import Pplsresult from "../assets/ppl-result.png";
 
 import Nakearstats from "../assets/nakear-stats.png";
-import Greenone from "../assets/green.png";
-import Greentwo from "../assets/green.png";
-import Greenthree from "../assets/green.png";
-import Greenfour from "../assets/green.png";
-
-import Stats from "../assets/stats.png";
 import Nakone from "../assets/nak-one.png";
 import Naktwo from "../assets/nak-two.png";
 import Nakthree from "../assets/nak-three.png";
@@ -55,8 +43,18 @@ import Nakfour from "../assets/nak-four.png";
 
 import Masalaimpact from "../assets/masalaimpact.png";
 import Masalabanner from "../assets/masalabanner.jpg";
-// import Masala from "../assets/masala1.jpeg";
-import Masalavideo from "../assets/videos/masala.mp4";
+
+// Mobile images
+import I2mResult from "../assets/i2m-result.png";
+import I2mImpact from "../assets/i2m-impact.png";
+import PplmResult from "../assets/pplm-result.png";
+import PplmImpact from "../assets/pplm-impact.png";
+import DravimImpact from "../assets/dravim-impact.png";
+import KutirmResult from "../assets/kutirm-result.png";
+import KutirmImpact from "../assets/kutirm-impact.png";
+import CsmResult from "../assets/csm-result.png";
+import NakearmResult from "../assets/nakearm-result.png";
+import MasamResult from "../assets/masalam-result.png";
 
 
 interface AudienceInsight {
@@ -107,6 +105,8 @@ interface ProjectData {
   clientImpact?: clientImpact[];
   audienceInsights?: AudienceInsight[];
   resultImage?: string;
+  mobileResultImage?: string;
+  mobileImpactImage?: string;
   deliveryVideos?: any[]; // Restored for JSX compatibility
   processImages: string[];
 }
@@ -118,7 +118,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     description: "...",
     category: "applications",
     imageUrl: Shirt,
-    impactImage: Nakearstats,
+    impactImage: I2W,
     client: "Quantum Capital",
     year: "2024",
     services: ["UI/UX Design", "Dashboard Development", "Data Visualization"],
@@ -149,6 +149,8 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     ],
 
     resultImage: Resultsglobie,
+    mobileResultImage: I2mResult,
+    mobileImpactImage: I2mImpact,
 
     capabilitiesUsed: [
       { description: "Brand Mascot Creation" },
@@ -200,7 +202,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     description: "...",
     category: "applications",
     imageUrl: Pplbanner,
-    impactImage: Pplimpact,
+    impactImage: Pplsresult,
     client: "Ppl-Sync",
     year: "2026",
     services: ["UI/UX Design", "Dashboard Development", "Data Visualization"],
@@ -208,8 +210,10 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     conceptDescription: "...",
     moodboardImages: [],
     sketchImages: [],
-    resultImage: Pplsresult,
-    deliveryVideos: [Pplsync1, Pplsync2],
+    resultImage: Pplimpact,
+    mobileResultImage: PplmResult,
+    mobileImpactImage: PplmImpact,
+    deliveryVideos: ["gEicDNM51NQ", "C5QmzX6idC4"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -273,7 +277,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     description: "...",
     category: "applications",
     imageUrl: Dravibanner,
-    impactImage: Pplimpact,
+    impactImage: Draviimpact,
     client: "Ppl-Sync",
     year: "2026",
     services: ["UI/UX Design", "Dashboard Development", "Data Visualization"],
@@ -281,8 +285,9 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     conceptDescription: "...",
     moodboardImages: [],
     sketchImages: [],
-    resultImage: Pplsresult,
-    deliveryVideos: [Dravidam1, Dravidam2],
+    resultImage: Draviimpact,
+    mobileImpactImage: DravimImpact,
+    deliveryVideos: ["_hgCZjSOR0g", "JK7afoDIt_s"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -348,7 +353,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     description: "...",
     category: "applications",
     imageUrl: Kutirbanner,
-    impactImage: Resultkutir,
+    impactImage: Kutirimpact,
     client: "Ppl-Sync",
     year: "2026",
     services: ["UI/UX Design", "Dashboard Development", "Data Visualization"],
@@ -356,8 +361,10 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     conceptDescription: "...",
     moodboardImages: [],
     sketchImages: [],
-    resultImage: Kutirimpact,
-    deliveryVideos: [Kutirone, Kutirtwo],
+    resultImage: Resultkutir,
+    mobileResultImage: KutirmResult,
+    mobileImpactImage: KutirmImpact,
+    deliveryVideos: ["ZDEi5EmQDHg", "AFWvw3MH9DI"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -423,7 +430,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     description: "...",
     category: "applications",
     imageUrl: Kutirbanner,
-    impactImage: Resultkutir,
+    impactImage: Csimpact,
     videoUrl: Cs360,
     client: "Courtside-360",
     year: "2026",
@@ -433,7 +440,8 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     moodboardImages: [],
     sketchImages: [],
     resultImage: Csimpact,
-    deliveryVideos: [Csvideo],
+    mobileResultImage: CsmResult,
+    deliveryVideos: ["7jJB1SIpSpA"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -503,7 +511,8 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     moodboardImages: [],
     sketchImages: [],
     resultImage: Kutirimpact,
-    deliveryVideos: [],
+    mobileResultImage: NakearmResult,
+    deliveryVideos: ["jcuhKC6WATo"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -538,7 +547,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     clientImpact: [
       {
         description:
-          "By combining premium creative execution with data-driven performance optimization, Navix Studio transformed Nakear into a scalable, high-growth D2C brand—building a reliable sales engine that delivers consistent returns.",
+          "By combining premium creative execution with data-driven performance optimization, Navix Media transformed Nakear into a scalable, high-growth D2C brand—building a reliable sales engine that delivers consistent returns.",
       },
     ],
 
@@ -569,7 +578,7 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     description: "...",
     category: "applications",
     imageUrl: Masalabanner,
-    impactImage: Resultkutir,
+    impactImage: Masalaimpact,
     client: "Courtside-360",
     year: "2026",
     services: ["UI/UX Design", "Dashboard Development", "Data Visualization"],
@@ -578,7 +587,8 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     moodboardImages: [],
     sketchImages: [],
     resultImage: Masalaimpact,
-    deliveryVideos: [Masalavideo],
+    mobileResultImage: MasamResult,
+    deliveryVideos: ["FWm1J1PAOqI"],
 
     // ✅ ADD THIS
     whatWeDid: [
@@ -935,30 +945,30 @@ export function ProjectDetail() {
             </motion.div>
           )}
 
-          {/* Our Results */}
-          {project.impactImage && project.id !== 5 && project.id !== 7 && (
+          {/* Our Results - hidden for project 3 (Dravidam) on all views */}
+          {project.impactImage && project.id !== 3 && (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="max-w-7xl mx-auto mb-32"
+              className="max-w-7xl mx-auto mb-8"
             >
               <h2 className="text-3xl md:text-5xl text-white mb-12">
                 Our Results
               </h2>
-
-              <img
-                src={project.impactImage}
-                alt="Our Results"
-                className="w-full max-w-5xl rounded-3xl object-cover"
-              />
+              <picture>
+                <source media="(max-width: 767px)" srcSet={project.mobileResultImage || project.impactImage} />
+                <img
+                  src={project.impactImage}
+                  alt="Our Results"
+                  className="w-full max-w-5xl rounded-3xl object-cover"
+                />
+              </picture>
             </motion.div>
           )}
 
-
-
-          {/* Our Impacts */}
-          {project.impactImage && project.id !== 3 && project.id !== 6 && (
+          {/* Our Impacts - only for projects 1, 2, 3, 4 */}
+          {project.impactImage && [1, 2, 3, 4].includes(project.id) && (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -968,34 +978,20 @@ export function ProjectDetail() {
               <h2 className="text-3xl md:text-5xl text-white mb-12">
                 Our Impacts
               </h2>
-
               <motion.div
                 initial={{ opacity: 0, scale: 0.97 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6 }}
-                className="
-        relative
-        w-full
-        max-h-[200px]
-        h-[160px]
-        sm:h-[180px]
-        md:h-[200px]
-        rounded-3xl
-        overflow-hidden
-        group
-      "
+                className="relative w-full rounded-3xl overflow-hidden group"
               >
-                <img
-                  src={project.resultImage}
-                  alt={`${project.title} Impact`}
-                  className="
-          w-full
-          object-cover
-          transition-transform
-          duration-700
-          group-hover:scale-105
-        "
-                />
+                <picture>
+                  <source media="(max-width: 767px)" srcSet={project.mobileImpactImage || project.resultImage} />
+                  <img
+                    src={project.resultImage}
+                    alt={`${project.title} Impact`}
+                    className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </picture>
               </motion.div>
             </motion.div>
           )}
@@ -1094,7 +1090,7 @@ export function ProjectDetail() {
               )} */}
               {project.deliveryVideos && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl">
-                  {project.deliveryVideos.map((video, index) => (
+                  {project.deliveryVideos.map((youtubeId, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 30 }}
@@ -1102,13 +1098,15 @@ export function ProjectDetail() {
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       className="flex justify-start"
                     >
-                      <video
-                        src={video}
-                        controls
-                        muted
-                        playsInline
-                        className="w-full max-w-sm h-auto rounded-2xl object-cover"
-                      />
+                      <div className="w-full max-w-sm rounded-2xl overflow-hidden">
+                        <iframe
+                          src={`https://www.youtube.com/embed/${youtubeId}?rel=0&modestbranding=1`}
+                          title={`Video ${index + 1}`}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="w-full h-[600px] rounded-2xl"
+                        />
+                      </div>
                     </motion.div>
                   ))}
                 </div>

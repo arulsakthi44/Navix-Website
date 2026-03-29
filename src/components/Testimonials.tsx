@@ -3,24 +3,24 @@ import { Quote } from 'lucide-react';
 
 const TESTIMONIALS = [
     {
-        text: "Navix Ai has completely transformed how we approach data analysis. The insights we get are deeper and faster than ever before. It's truly a game-changer for our strategic planning.",
-        name: "Arul",
-        role: "CEO of Navix Studio"
+        text: "Navix transformed our digital presence and website, improving our brand positioning. Their content and performance campaigns delivered consistent leads with clear execution and measurable results.",
+        name: "Narayanan",
+        role: "Founder of Nakear clothing"
     },
     {
-        text: "The scalability of this platform is unmatched. We went from processing thousands to millions of data points overnight without a hitch. The support team is also world-class.",
-        name: "Sarah Chen",
-        role: "CTO at TechFlow"
+        text: "Working with Navix was effortless. Their team understands branding, storytelling, and audience psychology extremely well. The creatives they produced elevated our brand image instantly.",
+        name: "Neethu chandran",
+        role: "COO at Event by Color theory"
     },
     {
-        text: "Implementation was a breeze. The API documentation is clear, and the SDKs are well-maintained. We integrated Navix into our core product in less than a week.",
-        name: "Marcus Rodriguez",
-        role: "Lead Engineer at DataSphere"
+        text: "Your service helped us showcase our property in a way that actually attracted buyers. The video content and ad campaigns brought in serious inquiries much faster than we expected.",
+        name: "Punith",
+        role: "CEO at Kutir"
     },
     {
-        text: "I've used many AI tools, but the accuracy and intuitive interface of Navix stand out. It empowers our non-technical team members to leverage advanced AI capabilities effortlessly.",
-        name: "Emily Watson",
-        role: "Product Director at InnovateX"
+        text: "Within a short span, Navix helped us improve our online visibility and generate qualified leads. Their performance marketing approach is structured, data-driven, and focused on ROI.",
+        name: "Sai Pranav",
+        role: "Founder of Courtside 360"
     }
 ];
 
