@@ -5,6 +5,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { useBackToProjects } from "../utils/scrollRestoration";
+import { SEO } from "../components/SEO";
 
 import "./ProEdgeProject.css";
 
@@ -30,6 +31,11 @@ export function ProEdgeProject() {
 
   return (
     <div className="proedge-page">
+      <SEO
+        title="ProEdge Learning App UI/UX Case Study | NaviX Media"
+        description="How NaviX Media designed the ProEdge mobile app interface, connecting course discovery, learner preferences, and tutor communication."
+        canonical="https://www.navixmedia.in/projects/12"
+      />
       {/* Ambient Lighting */}
       <div className="proedge-ambient" aria-hidden="true">
         <div className="proedge-ambient-top" />
@@ -63,6 +69,7 @@ export function ProEdgeProject() {
 
             {/* OVERVIEW */}
             <div className="pe-overview-container">
+              <h1 className="sr-only">ProEdge — Mobile Learning & Tutoring App Design</h1>
               <h2 className="pe-overview-heading">Overview</h2>
               <p className="pe-overview-desc">
                 ProEdge brings course discovery, learning preferences, and

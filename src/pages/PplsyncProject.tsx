@@ -5,6 +5,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { useBackToProjects } from "../utils/scrollRestoration";
+import { SEO } from "../components/SEO";
 
 import "./PplsyncProject.css";
 
@@ -30,6 +31,11 @@ export function PplsyncProject() {
 
   return (
     <div className="pplsync-page">
+      <SEO
+        title="Pplsync Attendance App UI/UX Case Study | NaviX Media"
+        description="How NaviX Media designed the Pplsync mobile app interface for workplace attendance tracking, employee service requests, and record management."
+        canonical="https://www.navixmedia.in/projects/13"
+      />
       {/* Ambient Lighting */}
       <div className="pplsync-ambient" aria-hidden="true">
         <div className="pplsync-ambient-top" />
@@ -63,6 +69,7 @@ export function PplsyncProject() {
 
             {/* OVERVIEW */}
             <div className="pp-overview-container">
+              <h1 className="sr-only">Pplsync — Employee Attendance & HR App Design</h1>
               <h2 className="pp-overview-heading">Overview</h2>
               <p className="pp-overview-desc">
                 Pplsync brings daily attendance and employee services into one

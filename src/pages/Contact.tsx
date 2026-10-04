@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { Phone, Mail } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export function Contact() {
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">
+      <SEO
+        title="Contact Us | NaviX Media"
+        description="Get in touch with NaviX Media to discuss your creative video, performance marketing, website, or mobile application project."
+        canonical="https://www.navixmedia.in/contact"
+      />
       {/* Ambient background gradients */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]" />

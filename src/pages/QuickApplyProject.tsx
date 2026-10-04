@@ -5,6 +5,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { useBackToProjects } from "../utils/scrollRestoration";
+import { SEO } from "../components/SEO";
 
 import "./QuickApplyProject.css";
 
@@ -30,6 +31,11 @@ export function QuickApplyProject() {
 
   return (
     <div className="quickapply-page">
+      <SEO
+        title="Quick Apply Job Portal App Case Study | NaviX Media"
+        description="How NaviX Media designed the Quick Apply mobile application to guide candidates through resume parsing, skill assessment, and job discovery."
+        canonical="https://www.navixmedia.in/projects/14"
+      />
       {/* Ambient Lighting */}
       <div className="quickapply-ambient" aria-hidden="true">
         <div className="quickapply-ambient-top" />
@@ -63,6 +69,7 @@ export function QuickApplyProject() {
 
             {/* OVERVIEW */}
             <div className="qa-overview-container">
+              <h1 className="sr-only">Quick Apply — Career & Application Discovery App Design</h1>
               <h2 className="qa-overview-heading">Overview</h2>
               <p className="qa-overview-desc">
                 Quick Apply connects resume analysis, assessment, and job

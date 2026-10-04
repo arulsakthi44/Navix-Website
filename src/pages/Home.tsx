@@ -10,12 +10,18 @@ import { ClientLogos } from '../components/ClientLogos';
 import { BottomCTA } from '../components/BottomCTA';
 import { Footer } from '../components/Footer';
 import { AntiGravityCanvas } from '../components/ui/particle-effect-for-hero';
-
+import { SEO } from '../components/SEO';
 
 export function Home() {
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">
+      <SEO
+        title="NaviX Media | Creative Growth, Performance Marketing & Web Experiences"
+        description="NaviX Media is a creative growth agency delivering scroll-stopping video content, performance marketing campaigns, and web experiences that drive measurable ROI."
+        canonical="https://www.navixmedia.in/"
+      />
       {/* Particle Animation - Full Page Viewport */}
+
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden max-h-screen">
         <AntiGravityCanvas />
       </div>

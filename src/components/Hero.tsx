@@ -12,7 +12,7 @@ export function Hero() {
       className="hero-section"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="hero-grid">
           {/* Left Block - Heading, Paragraph, CTA immediately visible on initial render */}
           <div className="space-y-8">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] leading-tight">
