@@ -2,6 +2,8 @@ import { motion } from 'motion/react';
 import { AuroraTextEffect } from '@/components/lightswind/aurora-text-effect';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Heroanimation from "../assets/videos/heroani.mp4";
+
 
 export function Hero() {
   const [isMobile, setIsMobile] = useState(false);
@@ -66,10 +68,11 @@ export function Hero() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative w-full h-[350px] lg:h-[400px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
+            className="relative w-full h-[350px] lg:h-[400px] rounded-2xl overflow-hidden"
           >
             {/* Video Container */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#4A8CFF]/10 to-purple-600/10 backdrop-blur-sm">
+            <div className="absolute inset-0">
+
               <video
                 autoPlay
                 loop
@@ -77,16 +80,36 @@ export function Hero() {
                 playsInline
                 className="w-full h-full object-cover"
               >
-                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                <source src={Heroanimation} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
 
             {/* Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+
+            {/* Animating tagline - bottom center of video */}
+            <style>{`
+              @keyframes shimmer {
+                0% { background-position: 200% center; }
+                100% { background-position: -200% center; }
+              }
+              .shimmer-text {
+                background: linear-gradient(to right, #868686 0%, #868686 40%, #fff 50%, #868686 60%, #868686 100%);
+                background-size: 200% auto;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: shimmer 4.5s linear infinite;
+                font-weight: 700;
+              }
+            `}</style>
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center whitespace-nowrap text-[18px] z-10">
+              <span className="shimmer-text">Navigate • Visualise • Xelerate</span>
+            </div>
             
             {/* Glow Effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#EE6A1F] to-[#1A70FF] rounded-2xl opacity-20 blur-xl -z-10" />
+            {/* <div className="absolute -inset-1 bg-gradient-to-r from-[#EE6A1F] to-[#1A70FF] rounded-2xl opacity-20 blur-xl -z-10" /> */}
           </motion.div>
         </div>
       </div>

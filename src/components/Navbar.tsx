@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import navixLogo from "../assets/navix-logo.png";
+import { clearSavedWorkScroll } from '../utils/scrollRestoration';
 
 
 export function Navbar() {
@@ -35,10 +36,10 @@ export function Navbar() {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, item: string) => {
     e.preventDefault();
     const sectionId = item.toLowerCase();
-    
+
     // Close mobile menu when clicking a link
     setMobileMenuOpen(false);
-    
+
     // Add a small delay to allow menu to close before scrolling
     setTimeout(() => {
       // If clicking "Home", navigate to home page
@@ -47,11 +48,19 @@ export function Navbar() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
-      
+
+      // If clicking "Work", navigate to projects page
+      if (sectionId === 'work') {
+        clearSavedWorkScroll();
+        navigate('/projects');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        return;
+      }
+
       // If we're on the home page, just scroll to section
       if (location.pathname === '/') {
         const element = document.getElementById(sectionId);
-        
+
         if (element) {
           const navHeight = 80;
           const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
@@ -81,7 +90,7 @@ export function Navbar() {
               transition={{ duration: 0.6 }}
               className="text-2xl tracking-wider cursor-pointer"
             >
-              <img 
+              <img
                 src={navixLogo}
                 alt="NaViX Logo"
                 className="h-12 md:h-16 w-auto object-contain"

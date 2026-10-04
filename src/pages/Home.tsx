@@ -1,11 +1,16 @@
 import { Hero } from '../components/Hero';
 import { Navbar } from '../components/Navbar';
 import { Masterpieces } from '../components/Masterpieces';
+import { ContentCreations } from '../components/ContentCreations';
+import { Results } from '../components/Results';
 import { Services } from '../components/Services';
+import { GrowthProcess } from '../components/GrowthProcess';
+import { Testimonials } from '../components/Testimonials';
 import { ClientLogos } from '../components/ClientLogos';
 import { BottomCTA } from '../components/BottomCTA';
 import { Footer } from '../components/Footer';
 import { AntiGravityCanvas } from '../components/ui/particle-effect-for-hero';
+
 
 export function Home() {
   return (
@@ -28,7 +33,11 @@ export function Home() {
         <Navbar />
         <Hero />
         <Masterpieces />
+        <ContentCreations />
+        <Results />
         <Services />
+        <GrowthProcess />
+        <Testimonials />
         <ClientLogos />
         <BottomCTA />
         <Footer />
