@@ -57,10 +57,6 @@ interface ResultCardProps {
 function ResultCard({ delay, metric, caption, descriptor, imageSrc }: ResultCardProps) {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay }}
             whileHover={{ y: -5 }}
             className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex flex-col gap-6 hover:border-white/20 transition-colors group"
         >

@@ -29,32 +29,22 @@ export function Testimonials() {
         <section className="relative py-20 overflow-hidden">
             <div className="relative max-w-7xl mx-auto px-6">
                 {/* Section Title */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
+                <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
                         Powering enterprise companies, <br className="hidden md:block" />
                         startups, and everything in between
                     </h2>
-                </motion.div>
+                </div>
 
                 {/* Testimonials Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {TESTIMONIALS.map((testimonial, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
                             whileHover={{
                                 y: -10,
                                 transition: { duration: 0.3 }
                             }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="group relative bg-[#0A0F1C]/80 backdrop-blur-sm border border-white/5 group-hover:border-transparent rounded-2xl overflow-hidden transition-all duration-300"
                         >
                             {/* Gradient Border Hover Effect */}

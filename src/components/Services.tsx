@@ -56,27 +56,17 @@ export function Services() {
     <section id="services" className="relative py-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl text-white mb-8"
-        >
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Our Services
-            </h2>
-        </motion.h2>
+        <div className="mb-8">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Our Services
+          </h2>
+        </div>
 
         {/* Service Accordions */}
         <div className="space-y-6">
-          {services.map((service, index) => (
-            <motion.div
+          {services.map((service) => (
+            <div
               key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
               className="border border-white/10 rounded-2xl bg-gradient-to-r from-white/5 to-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-[#4A8CFF]/30 transition-all duration-300"
             >
               {/* Accordion Header */}
@@ -169,18 +159,12 @@ export function Services() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Projects CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-12 flex justify-center"
-        >
+        <div className="mt-12 flex justify-center">
           <Link to="/projects">
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -193,7 +177,7 @@ export function Services() {
               Our Projects
             </motion.button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

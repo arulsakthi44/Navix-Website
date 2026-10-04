@@ -40,17 +40,11 @@ export function ClientLogos() {
     <section className="relative py-16 overflow-hidden border-b border-white/5">
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Section Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12">
           <h3 className="text-gray-400 tracking-widest text-sm uppercase">
             Trusted by Industry Leaders
           </h3>
-        </motion.div>
+        </div>
 
         {/* Infinite scroll container */}
         <div className="relative">

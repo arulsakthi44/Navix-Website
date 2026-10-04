@@ -8,13 +8,7 @@ export function BottomCTA() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col items-center space-y-20">
           {/* Animated NaViX video */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative w-full max-w-4xl"
-          >
+          <div className="relative w-full max-w-4xl">
             {/* Video container */}
             <div className="relative flex items-center justify-center">
               <video
@@ -28,15 +22,11 @@ export function BottomCTA() {
                 <source src={navixfooter} type="video/mp4" />
               </video>
             </div>
-          </motion.div>
+          </div>
 
           {/* CTA Button */}
           <Link to="/contact">
             <motion.button
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
               whileHover={{ 
                 y: -10,
                 transition: { duration: 0.3, ease: "easeOut" }

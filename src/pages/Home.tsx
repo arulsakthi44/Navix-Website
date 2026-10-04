@@ -15,13 +15,13 @@ import { AntiGravityCanvas } from '../components/ui/particle-effect-for-hero';
 export function Home() {
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">
-      {/* Particle Animation - Full Page */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      {/* Particle Animation - Full Page Viewport */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden max-h-screen">
         <AntiGravityCanvas />
       </div>
 
       {/* Ambient background gradients */}
-      <div className="fixed inset-0 pointer-events-none z-[1]">
+      <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden max-h-screen">
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px]" />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/15 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-600/15 rounded-full blur-[120px]" />
