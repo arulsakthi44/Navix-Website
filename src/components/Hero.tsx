@@ -9,7 +9,8 @@ export function Hero() {
   return (
     <section 
       id="home" 
-      className="relative min-h-[85vh] flex items-center pt-28 sm:pt-28 md:pt-24 lg:pt-20 pb-12 lg:pb-0" 
+      className="relative pb-12 lg:pb-0 lg:min-h-[calc(100vh-5rem)] lg:max-h-[850px] lg:flex lg:items-center" 
+      style={{ paddingTop: '108px' }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -43,7 +44,10 @@ export function Hero() {
           </div>
 
           {/* Right Block - Video preview immediately visible on initial render */}
-          <div className="relative w-full h-[320px] sm:h-[350px] lg:h-[400px] rounded-2xl overflow-hidden">
+          <div 
+            className="relative w-full rounded-2xl overflow-hidden"
+            style={{ minHeight: '300px', height: '360px', maxHeight: '420px' }}
+          >
             {/* Video Container */}
             <div className="absolute inset-0">
 
