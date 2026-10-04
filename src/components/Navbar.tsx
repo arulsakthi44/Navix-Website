@@ -7,8 +7,19 @@ import navixLogo from "../assets/navix-logo.png";
 import { clearSavedWorkScroll } from '../utils/scrollRestoration';
 
 
+interface MenuItem {
+  name: string;
+  href: string;
+}
+
+const menuItems: MenuItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Work', href: '/projects' },
+  { name: 'Services', href: '/#services' },
+  { name: 'Contact', href: '/contact' },
+];
+
 export function Navbar() {
-  const menuItems = ['Home', 'Work', 'Services', 'Contact'];
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,49 +44,58 @@ export function Navbar() {
     }
   }, [location]);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, item: string) => {
-    e.preventDefault();
-    const sectionId = item.toLowerCase();
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, item: MenuItem) => {
+    // If middle click or ctrl/cmd click, allow browser to open link in new tab
+    if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey) {
+      return;
+    }
 
-    // Close mobile menu when clicking a link
+    e.preventDefault();
     setMobileMenuOpen(false);
 
-    // Add a small delay to allow menu to close before scrolling
     setTimeout(() => {
-      // If clicking "Home", navigate to home page
-      if (sectionId === 'home') {
-        navigate('/');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (item.name === 'Home') {
+        if (location.pathname === '/') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          navigate('/');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
         return;
       }
 
-      // If clicking "Work", navigate to projects page
-      if (sectionId === 'work') {
+      if (item.name === 'Work') {
         clearSavedWorkScroll();
         navigate('/projects');
         window.scrollTo({ top: 0, behavior: 'instant' });
         return;
       }
 
-      // If we're on the home page, just scroll to section
-      if (location.pathname === '/') {
-        const element = document.getElementById(sectionId);
+      if (item.name === 'Services') {
+        if (location.pathname === '/') {
+          const element = document.getElementById('services');
+          if (element) {
+            const navHeight = 80;
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - navHeight;
 
-        if (element) {
-          const navHeight = 80;
-          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elementPosition - navHeight;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        } else {
+          navigate('/#services');
         }
-      } else {
-        // If we're on another page, navigate to home with hash
-        navigate(`/#${sectionId}`);
+        return;
       }
-    }, 300); // Delay to allow mobile menu to close
+
+      if (item.name === 'Contact') {
+        navigate('/contact');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+    }, 150);
   };
 
   return (
@@ -96,13 +116,13 @@ export function Navbar() {
           {/* Desktop Menu - Hidden on mobile */}
           <ul className="hidden md:flex items-center gap-8">
             {menuItems.map((item) => (
-              <li key={item}>
+              <li key={item.name}>
                 <a
-                  href={`#${item.toLowerCase()}`}
+                  href={item.href}
                   onClick={(e) => handleClick(e, item)}
                   className="text-white/90 tracking-wider transition-all duration-300 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] cursor-pointer"
                 >
-                  {item}
+                  {item.name}
                 </a>
               </li>
             ))}
@@ -131,13 +151,13 @@ export function Navbar() {
       >
         <ul className="px-6 py-4 space-y-4">
           {menuItems.map((item) => (
-            <li key={item}>
+            <li key={item.name}>
               <a
-                href={`#${item.toLowerCase()}`}
+                href={item.href}
                 onClick={(e) => handleClick(e, item)}
                 className="block text-white/90 tracking-wider transition-all duration-300 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] cursor-pointer py-2"
               >
-                {item}
+                {item.name}
               </a>
             </li>
           ))}

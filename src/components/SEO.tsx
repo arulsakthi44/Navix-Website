@@ -54,6 +54,14 @@ export function SEO({ title, description, canonical }: SEOProps) {
       document.head.appendChild(ogUrl);
     }
     ogUrl.setAttribute('content', canonicalUrl);
+
+    let ogSiteName = document.querySelector('meta[property="og:site_name"]');
+    if (!ogSiteName) {
+      ogSiteName = document.createElement('meta');
+      ogSiteName.setAttribute('property', 'og:site_name');
+      document.head.appendChild(ogSiteName);
+    }
+    ogSiteName.setAttribute('content', 'NaviX Media');
   }, [title, description, canonical]);
 
   return null;

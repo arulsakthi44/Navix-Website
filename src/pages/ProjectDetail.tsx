@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "motion/react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft } from "lucide-react";
@@ -112,6 +112,9 @@ interface ProjectData {
   mobileImpactImage?: string;
   deliveryVideos?: any[]; // Restored for JSX compatibility
   processImages: string[];
+  seoTitle?: string;
+  seoDescription?: string;
+  h1Title?: string;
 }
 
 const PROJECT_DATA: { [key: number]: ProjectData } = {
@@ -197,6 +200,9 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
       Schoolfive,
       Schoolsix,
     ],
+    seoTitle: "Globbie for i2Global Brand Mascot Case Study | NaviX Media",
+    seoDescription: "How NaviX Media designed Globbie, an animated brand mascot and video creative campaign for i2Global to build emotional recognition and student trust.",
+    h1Title: "Globbie for i2Global — Brand Mascot & Creative Campaign",
   },
 
   2: {
@@ -272,6 +278,9 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     ],
 
     processImages: [Pplone, Ppltwo, Pplthree, Pplfour, Pplfive],
+    seoTitle: "PPLSync B2B SaaS Creative Campaign Case Study | NaviX Media",
+    seoDescription: "How NaviX Media built scalable AI-led static and video creatives for PPLSync to sharpen B2B SaaS messaging and accelerate customer acquisition.",
+    h1Title: "PPLSync — B2B SaaS Creative Systems & Performance Ads",
   },
 
   3: {
@@ -347,6 +356,9 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     ],
 
     processImages: [],
+    seoTitle: "Dravidam Culinary Video & Branding Case Study | NaviX Media",
+    seoDescription: "How NaviX Media created cinematic food and ambience videos for Dravidam in Delhi NCR to turn social discovery into restaurant footfall.",
+    h1Title: "Dravidam — Cinematic Culinary Video & Restaurant Branding",
   },
 
 
@@ -424,6 +436,9 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     ],
 
     processImages: [],
+    seoTitle: "Kutir Real Estate Video Marketing Case Study | NaviX Media",
+    seoDescription: "How NaviX Media combined on-ground shoots with performance video creatives to drive direct tenant inquiries and rental discovery for Kutir.",
+    h1Title: "Kutir — Real Estate Video Marketing & Direct Inquiries",
   },
 
 
@@ -496,6 +511,9 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     ],
 
     processImages: [],
+    seoTitle: "Courtside 360 WhatsApp Booking Funnel Case Study | NaviX Media",
+    seoDescription: "How NaviX Media developed a hyper-local sports video campaign and WhatsApp-first booking engine for Courtside 360 court reservations.",
+    h1Title: "Courtside 360 — Hyper-Local Sports Video & WhatsApp Booking Funnel",
   },
 
   6: {
@@ -573,6 +591,9 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     ],
 
     processImages: [Nakone, Naktwo, Nakthree, Nakfour],
+    seoTitle: "Nakear D2C Apparel Video & E-Commerce Case Study | NaviX Media",
+    seoDescription: "How NaviX Media paired lifestyle video storytelling and Dynamic Product Ads with mobile UX optimization to scale D2C formal wear sales for Nakear.",
+    h1Title: "Nakear — Lifestyle Video Creative & D2C E-Commerce Growth",
   },
 
   7: {
@@ -643,6 +664,9 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
     ],
 
     processImages: [],
+    seoTitle: "Masala Mandi Restaurant Growth Case Study | NaviX Media",
+    seoDescription: "How NaviX Media converted sensory food content and visual storytelling directly into chat-based dining inquiries for Masala Mandi.",
+    h1Title: "Masala Mandi — Restaurant Social Content & Chat-Based Enquiries",
   },
 
   // 8: {
@@ -846,12 +870,18 @@ export function ProjectDetail() {
       >
         <div className="text-center">
           <h1 className="text-white text-4xl mb-4">Project Not Found</h1>
-          <button
-            onClick={handleBack}
+          <Link
+            to="/projects"
+            onClick={(e) => {
+              if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+                e.preventDefault();
+                handleBack();
+              }
+            }}
             className="text-blue-400 hover:text-blue-300 transition-colors"
           >
             Back to Projects
-          </button>
+          </Link>
         </div>
       </div>
     );
@@ -863,8 +893,8 @@ export function ProjectDetail() {
       style={{ fontFamily: '"Bricolage Grotesque", sans-serif' }}
     >
       <SEO
-        title={`${project.title} Case Study | NaviX Media`}
-        description={project.fullDescription || project.description}
+        title={project.seoTitle || `${project.title} Case Study | NaviX Media`}
+        description={project.seoDescription || project.fullDescription || project.description}
         canonical={`https://www.navixmedia.in/projects/${id}`}
       />
       {/* Ambient background gradients */}
@@ -881,15 +911,20 @@ export function ProjectDetail() {
         <main className="pt-32 pb-20 px-6">
           {/* Back Button */}
           <div className="max-w-7xl mx-auto mb-8">
-            <motion.button
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              onClick={handleBack}
-              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
+            <Link
+              to="/projects"
+              onClick={(e) => {
+                if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+                  e.preventDefault();
+                  handleBack();
+                }
+              }}
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors group cursor-pointer"
+              aria-label="Back to Projects"
             >
               <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
               <span>Back to Projects</span>
-            </motion.button>
+            </Link>
           </div>
 
           {/* Hero Section */}
@@ -934,7 +969,7 @@ export function ProjectDetail() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="max-w-4xl mx-auto mb-32"
           >
-            <h1 className="sr-only">{project.title}</h1>
+            <h1 className="sr-only">{project.h1Title || project.title}</h1>
             <h2 className="text-3xl md:text-5xl text-white mb-8 text-center">
               Overview
             </h2>
@@ -1289,14 +1324,15 @@ export function ProjectDetail() {
             transition={{ duration: 0.6, delay: 1 }}
             className="max-w-7xl mx-auto text-center"
           >
-            <motion.button
-              onClick={handleBack}
-              whileHover={{
-                y: -10,
-                transition: { duration: 0.3, ease: "easeOut" },
+            <Link
+              to="/projects"
+              onClick={(e) => {
+                if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+                  e.preventDefault();
+                  handleBack();
+                }
               }}
-              whileTap={{ scale: 0.98 }}
-              className="px-10 py-4 rounded-[80px] border-[3px] border-solid border-white text-white tracking-widest"
+              className="inline-block px-10 py-4 rounded-[80px] border-[3px] border-solid border-white text-white tracking-widest hover:scale-105 transition-transform duration-300"
               style={{
                 backgroundImage:
                   "linear-gradient(100.351deg, rgb(0, 0, 0) 14.842%, rgb(95, 48, 20) 25.921%, rgb(172, 76, 21) 37%, rgb(198, 198, 198) 51.41%, rgb(32, 86, 174) 68.977%, rgb(0, 0, 0) 89.412%)",
@@ -1304,7 +1340,7 @@ export function ProjectDetail() {
               }}
             >
               View All Projects
-            </motion.button>
+            </Link>
           </motion.div>
         </main>
 

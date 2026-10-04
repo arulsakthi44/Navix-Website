@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "motion/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
@@ -45,14 +45,20 @@ export function InternMeProject() {
         {/* HERO */}
         <section className="im-hero-section">
           <div className="internme-container">
-            <button
-              onClick={handleBack}
+            <Link
+              to="/projects"
+              onClick={(e) => {
+                if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+                  e.preventDefault();
+                  handleBack();
+                }
+              }}
               className="im-back-btn"
               aria-label="Back to Projects"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Projects</span>
-            </button>
+            </Link>
 
             <div className="im-hero-image-frame">
               <img
@@ -501,21 +507,22 @@ export function InternMeProject() {
               </div>
 
               <div className="im-cta-right">
-                <button
-                  onClick={() => navigate("/contact")}
+                <Link
+                  to="/contact"
                   className="im-cta-btn-primary"
                 >
                   <span>Let’s Talk</span>
                   <ArrowUpRight className="w-4 h-4" />
-                </button>
+                </Link>
 
-                <motion.button
-                  onClick={handleBack}
-                  whileHover={{
-                    y: -6,
-                    transition: { duration: 0.3, ease: "easeOut" },
+                <Link
+                  to="/projects"
+                  onClick={(e) => {
+                    if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+                      e.preventDefault();
+                      handleBack();
+                    }
                   }}
-                  whileTap={{ scale: 0.98 }}
                   className="im-view-all-projects-btn"
                   style={{
                     backgroundImage:
@@ -524,7 +531,7 @@ export function InternMeProject() {
                   }}
                 >
                   View All Projects
-                </motion.button>
+                </Link>
               </div>
             </div>
           </div>
