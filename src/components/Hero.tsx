@@ -3,14 +3,13 @@ import { AuroraTextEffect } from '@/components/lightswind/aurora-text-effect';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Heroanimation from "../assets/videos/heroani.mp4";
-
+import './Hero.css';
 
 export function Hero() {
   return (
     <section 
       id="home" 
-      className="relative pb-12 lg:pb-0 lg:min-h-[calc(100vh-5rem)] lg:max-h-[850px] lg:flex lg:items-center" 
-      style={{ paddingTop: '108px' }}
+      className="hero-section"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -44,10 +43,7 @@ export function Hero() {
           </div>
 
           {/* Right Block - Video preview immediately visible on initial render */}
-          <div 
-            className="relative w-full rounded-2xl overflow-hidden"
-            style={{ minHeight: '300px', height: '360px', maxHeight: '420px' }}
-          >
+          <div className="hero-video-card">
             {/* Video Container */}
             <div className="absolute inset-0">
 

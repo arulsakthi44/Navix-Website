@@ -1,0 +1,44 @@
+/* Explicit Scoped Styles for Hero Section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 108px; /* Fixed navbar clearance (82px navbar + 26px breathing room) */
+  padding-bottom: 48px;
+  display: block; /* Mobile: natural top-aligned content flow */
+  min-height: auto;
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    display: flex;
+    align-items: center;
+    /* Genuinely bounded preferred/minimum desktop height:
+       clamp(600px, 75vh, 850px) guarantees:
+       1. On shorter desktop screens: minimum height is 600px.
+       2. On normal desktop screens: scales around 75vh (e.g. 675px on 900p, 750px on 1000p).
+       3. On tall crawlers / full-page captures (8,000px - 10,000px):
+          clamp() strictly enforces the upper bound of 850px, preventing unbounded vh expansion.
+       4. Allows the section to grow naturally if content requires more vertical space (no max-height clipping). */
+    min-height: clamp(600px, 75vh, 850px);
+    padding-top: 88px;
+    padding-bottom: 48px;
+  }
+}
+
+.hero-video-card {
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 360px;
+  min-height: 300px;
+  max-height: 420px;
+}
+
+@media (min-width: 1024px) {
+  .hero-video-card {
+    height: 400px;
+    max-height: 440px;
+  }
+}
