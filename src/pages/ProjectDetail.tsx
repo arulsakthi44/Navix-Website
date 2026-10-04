@@ -5,6 +5,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft } from "lucide-react";
 import { useBackToProjects } from "../utils/scrollRestoration";
+import { SEO } from "../components/SEO";
 
 import I2W from "../assets/i2w-result.png";
 import Schoolone from "../assets/i2g-1.png";
@@ -861,6 +862,11 @@ export function ProjectDetail() {
       className="relative min-h-screen bg-black overflow-hidden"
       style={{ fontFamily: '"Bricolage Grotesque", sans-serif' }}
     >
+      <SEO
+        title={`${project.title} Case Study | NaviX Media`}
+        description={project.fullDescription || project.description}
+        canonical={`https://www.navixmedia.in/projects/${id}`}
+      />
       {/* Ambient background gradients */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]" />
@@ -928,6 +934,7 @@ export function ProjectDetail() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="max-w-4xl mx-auto mb-32"
           >
+            <h1 className="sr-only">{project.title}</h1>
             <h2 className="text-3xl md:text-5xl text-white mb-8 text-center">
               Overview
             </h2>

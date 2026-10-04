@@ -5,6 +5,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { useBackToProjects } from "../utils/scrollRestoration";
+import { SEO } from "../components/SEO";
 
 import "./SrsAcademyProject.css";
 
@@ -29,6 +30,11 @@ export function SrsAcademyProject() {
 
   return (
     <div className="srs-page">
+      <SEO
+        title="SRS Academy Landing Page Case Study | NaviX Media"
+        description="How NaviX Media designed the SRS Academy landing page, structuring educational programs, teacher training, and test series into an intuitive demo enquiry flow."
+        canonical="https://www.navixmedia.in/projects/11"
+      />
       {/* Ambient Lighting */}
       <div className="srs-ambient" aria-hidden="true">
         <div className="srs-ambient-top" />
@@ -62,6 +68,7 @@ export function SrsAcademyProject() {
 
             {/* OVERVIEW */}
             <div className="srs-overview-container">
+              <h1 className="sr-only">SRS Academy — Academic & Educator Training Landing Page</h1>
               <h2 className="srs-overview-heading">Overview</h2>
               <p className="srs-overview-desc">
                 SRS Academy brings student learning and teacher development

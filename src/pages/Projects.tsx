@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useWorkPageScrollRestoration, saveWorkPageScroll } from '../utils/scrollRestoration';
+import { SEO } from '../components/SEO';
 
 // Web Development Project Thumbnails
 import InternmeThumb from "../assets/internme_thumb_new.png";
@@ -272,6 +273,11 @@ export function Projects() {
       className="relative min-h-screen bg-black overflow-hidden"
       style={{ fontFamily: '"Bricolage Grotesque", sans-serif' }}
     >
+      <SEO
+        title="Our Work & Case Studies | NaviX Media"
+        description="Explore NaviX Media's portfolio of web design, mobile applications, and performance marketing projects crafted for growing startups and established brands."
+        canonical="https://www.navixmedia.in/projects"
+      />
       {/* Ambient background gradients */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]" />

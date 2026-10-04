@@ -5,6 +5,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { useBackToProjects } from "../utils/scrollRestoration";
+import { SEO } from "../components/SEO";
 
 import "./InternMeProject.css";
 
@@ -27,6 +28,11 @@ export function InternMeProject() {
 
   return (
     <div className="internme-page">
+      <SEO
+        title="InternMe Web Experience Case Study | NaviX Media"
+        description="How NaviX Media designed InternMe's website experience, organizing internship discovery, role details, and membership plans into a clear interface."
+        canonical="https://www.navixmedia.in/projects/8"
+      />
       {/* Ambient Lighting */}
       <div className="internme-ambient" aria-hidden="true">
         <div className="internme-ambient-top" />
@@ -58,6 +64,7 @@ export function InternMeProject() {
             </div>
 
             <div className="im-overview-container">
+              <h1 className="sr-only">InternMe — Web Experience & Platform Design</h1>
               <h2 className="im-overview-heading">Overview</h2>
               <p className="im-overview-desc">
                 InternMe connects students with internship opportunities across

@@ -5,6 +5,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { useBackToProjects } from "../utils/scrollRestoration";
+import { SEO } from "../components/SEO";
 
 import "./EdufusionProject.css";
 
@@ -27,6 +28,11 @@ export function EdufusionProject() {
 
   return (
     <div className="edufusion-page">
+      <SEO
+        title="i2Global Edufusion Web Platform Case Study | NaviX Media"
+        description="How NaviX Media created the Edufusion website for i2Global, presenting course discovery, mentor models, and streamlined enrollment for K-12 students."
+        canonical="https://www.navixmedia.in/projects/10"
+      />
       {/* Ambient Lighting */}
       <div className="edufusion-ambient" aria-hidden="true">
         <div className="edufusion-ambient-top" />
@@ -60,6 +66,7 @@ export function EdufusionProject() {
 
             {/* OVERVIEW */}
             <div className="ef-overview-container">
+              <h1 className="sr-only">i2Global Edufusion — Digital Learning Platform</h1>
               <h2 className="ef-overview-heading">Overview</h2>
               <p className="ef-overview-desc">
                 Edufusion is i2Global’s learning offering for students in Grades

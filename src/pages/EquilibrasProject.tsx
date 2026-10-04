@@ -5,6 +5,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { useBackToProjects } from "../utils/scrollRestoration";
+import { SEO } from "../components/SEO";
 
 import "./EquilibrasProject.css";
 
@@ -27,6 +28,11 @@ export function EquilibrasProject() {
 
   return (
     <div className="equilibras-page">
+      <SEO
+        title="Equilibras Footwear Web Experience Case Study | NaviX Media"
+        description="How NaviX Media designed the Equilibras website to highlight its patented e-bed footwear technology, collection browsing, and brand storytelling."
+        canonical="https://www.navixmedia.in/projects/9"
+      />
       {/* Ambient Lighting */}
       <div className="equilibras-ambient" aria-hidden="true">
         <div className="equilibras-ambient-top" />
@@ -60,6 +66,7 @@ export function EquilibrasProject() {
 
             {/* OVERVIEW */}
             <div className="eq-overview-container">
+              <h1 className="sr-only">Equilibras™ — Biomechanical Footwear Web Experience</h1>
               <h2 className="eq-overview-heading">Overview</h2>
               <p className="eq-overview-desc">
                 Equilibras™ brings footwear, its e-bed™ technology story, and a
