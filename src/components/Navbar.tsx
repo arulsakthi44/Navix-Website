@@ -84,34 +84,19 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo - Left aligned and bigger */}
           <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-2xl tracking-wider cursor-pointer"
-            >
+            <div className="text-2xl tracking-wider cursor-pointer">
               <img
                 src={navixLogo}
                 alt="NaViX Logo"
                 className="h-12 md:h-16 w-auto object-contain"
               />
-            </motion.div>
+            </div>
           </Link>
 
           {/* Desktop Menu - Hidden on mobile */}
-          <motion.ul
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="hidden md:flex items-center gap-8"
-          >
-            {menuItems.map((item, index) => (
-              <motion.li
-                key={item}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
+          <ul className="hidden md:flex items-center gap-8">
+            {menuItems.map((item) => (
+              <li key={item}>
                 <a
                   href={`#${item.toLowerCase()}`}
                   onClick={(e) => handleClick(e, item)}
@@ -119,21 +104,18 @@ export function Navbar() {
                 >
                   {item}
                 </a>
-              </motion.li>
+              </li>
             ))}
-          </motion.ul>
+          </ul>
 
           {/* Mobile Menu Button */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
+          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </motion.button>
+          </button>
         </div>
       </div>
 
@@ -148,13 +130,8 @@ export function Navbar() {
         className="md:hidden overflow-hidden bg-black/95 backdrop-blur-lg border-t border-white/5"
       >
         <ul className="px-6 py-4 space-y-4">
-          {menuItems.map((item, index) => (
-            <motion.li
-              key={item}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: mobileMenuOpen ? 1 : 0, x: mobileMenuOpen ? 0 : -20 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-            >
+          {menuItems.map((item) => (
+            <li key={item}>
               <a
                 href={`#${item.toLowerCase()}`}
                 onClick={(e) => handleClick(e, item)}
@@ -162,7 +139,7 @@ export function Navbar() {
               >
                 {item}
               </a>
-            </motion.li>
+            </li>
           ))}
         </ul>
       </motion.div>

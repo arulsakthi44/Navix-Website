@@ -30,24 +30,12 @@ export function GrowthProcess() {
 
                 {/* Header */}
                 <div className="text-center mb-20">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-4xl md:text-5xl font-bold text-white mb-6"
-                    >
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                         Scale Your Brand in 3 Simple Steps
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-gray-400 text-lg md:text-xl"
-                    >
+                    </h2>
+                    <p className="text-gray-400 text-lg md:text-xl">
                         No fluff. No confusion. Just a proven system.
-                    </motion.p>
+                    </p>
                 </div>
 
                 {/* Steps Grid */}
@@ -56,12 +44,8 @@ export function GrowthProcess() {
                     <div className="hidden lg:block absolute top-[35px] left-[16%] right-[16%] h-[2px] bg-gradient-to-r from-transparent via-white/10 to-transparent z-0" />
 
                     {steps.map((step, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                             className="relative z-10 flex flex-col items-center text-center group"
                         >
                             {/* Step Number Badge */}
@@ -85,18 +69,12 @@ export function GrowthProcess() {
                             <p className="text-gray-400 leading-relaxed max-w-sm mx-auto">
                                 {step.description}
                             </p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
 
                 {/* CTA Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                    className="text-center"
-                >
+                <div className="text-center">
                     <Link to="/contact">
                         <motion.button
                             whileHover={{
@@ -117,7 +95,7 @@ export function GrowthProcess() {
                     {/* <p className="mt-6 text-white/80 text-sm italic">
                         Your growth should be simple and consistent, not chaotic.
                     </p> */}
-                </motion.div>
+                </div>
 
             </div>
         </section>

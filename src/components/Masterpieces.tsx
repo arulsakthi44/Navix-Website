@@ -80,51 +80,27 @@ export function Masterpieces() {
 
       <div className="relative max-w-7xl mx-auto px-4">
         {/* Section Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Our Masterpieces
-            </h2>
-        </motion.div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Our Masterpieces
+          </h2>
+        </div>
 
         {/* 3D Sphere Gallery */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex justify-center items-center w-full mx-auto overflow-visible"
-        >
+        <div className="flex justify-center items-center w-full mx-auto overflow-visible">
           <SphereImageGrid
             images={SPHERE_IMAGES}
             {...sphereConfig}
           />
-        </motion.div>
+        </div>
 
         {/* Helper text */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center text-gray-400 mt-8 text-sm"
-        >
+        <p className="text-center text-gray-400 mt-8 text-sm">
           Drag to explore • Click to view details
-        </motion.p>
+        </p>
 
         {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex justify-center mt-12"
-        >
+        <div className="flex justify-center mt-12">
           <Link to="/projects">
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -137,7 +113,7 @@ export function Masterpieces() {
               Our Projects
             </motion.button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

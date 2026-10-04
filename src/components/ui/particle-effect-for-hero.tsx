@@ -291,16 +291,20 @@ export const AntiGravityCanvas: React.FC = () => {
   useEffect(() => {
     const handleResize = () => {
       if (containerRef.current && canvasRef.current) {
-        const { width, height } = containerRef.current.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
+        // Bound dimensions strictly to the viewport to prevent unbounded canvas sizing in headless crawlers
+        const rawWidth = typeof window !== 'undefined' && window.innerWidth ? window.innerWidth : containerRef.current.clientWidth;
+        const rawHeight = typeof window !== 'undefined' && window.innerHeight ? window.innerHeight : containerRef.current.clientHeight;
+        const width = Math.max(320, Math.min(rawWidth || 360, 1920));
+        const height = Math.max(480, Math.min(rawHeight || 800, 1080));
+        const dpr = Math.min(typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1, 2);
         
-        // Set actual size in memory (scaled to account for extra pixel density)
-        canvasRef.current.width = width * dpr;
-        canvasRef.current.height = height * dpr;
+        // Set actual size in memory (scaled to account for extra pixel density, capped at safe 2x)
+        canvasRef.current.width = Math.round(width * dpr);
+        canvasRef.current.height = Math.round(height * dpr);
         
-        // Make it visible size
-        canvasRef.current.style.width = `${width}px`;
-        canvasRef.current.style.height = `${height}px`;
+        // CSS display size stays locked to 100% of viewport container
+        canvasRef.current.style.width = '100%';
+        canvasRef.current.style.height = '100%';
 
         // Normalize coordinate system to use CSS pixels
         const ctx = canvasRef.current.getContext('2d');
@@ -366,13 +370,11 @@ export const AntiGravityCanvas: React.FC = () => {
   return (
     <div 
       ref={containerRef} 
-      className="absolute inset-0 z-0 overflow-hidden bg-black"
+      className="fixed inset-0 z-0 overflow-hidden max-h-screen bg-black pointer-events-none"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <canvas ref={canvasRef} className="block w-full h-full" />
-      
-
+      <canvas ref={canvasRef} className="block w-full h-full max-h-screen pointer-events-none" />
     </div>
   );
 };
