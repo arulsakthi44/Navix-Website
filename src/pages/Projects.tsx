@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useWorkPageScrollRestoration, saveWorkPageScroll } from '../utils/scrollRestoration';
@@ -167,39 +167,8 @@ function ProjectCard({
   accentColor?: string;
   onNavigate?: (id: number) => void;
 }) {
-  const handleClick = () => {
-    if (project.externalUrl) {
-      window.open(project.externalUrl, '_blank', 'noopener,noreferrer');
-    } else if (onNavigate) {
-      onNavigate(project.id);
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      handleClick();
-    }
-  };
-
-  return (
-    <motion.div
-      id={`project-card-${project.id}`}
-      data-project-id={project.id}
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      role="link"
-      tabIndex={0}
-      aria-label={
-        project.externalUrl
-          ? `View ${project.title} on Google Play`
-          : `View ${project.title} project details`
-      }
-      onKeyDown={handleKeyDown}
-      onClick={handleClick}
-      className="group relative overflow-hidden rounded-2xl cursor-pointer h-full focus:outline-none focus:ring-2 focus:ring-[#4A8CFF] focus:ring-offset-2 focus:ring-offset-black"
-    >
+  const cardInner = (
+    <>
       {/* Gradient Border Wrapper */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#EE6A1F] to-[#1A70FF] opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[2px]">
         <div className="w-full h-full bg-[#0a0a0a] rounded-2xl" />
@@ -250,6 +219,53 @@ function ProjectCard({
           </p>
         </div>
       </div>
+    </>
+  );
+
+  if (project.externalUrl) {
+    return (
+      <motion.a
+        href={project.externalUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        id={`project-card-${project.id}`}
+        data-project-id={project.id}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.08 }}
+        aria-label={`View ${project.title} on Google Play`}
+        className="group relative overflow-hidden rounded-2xl cursor-pointer h-full block focus:outline-none focus:ring-2 focus:ring-[#4A8CFF] focus:ring-offset-2 focus:ring-offset-black"
+      >
+        {cardInner}
+      </motion.a>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="h-full"
+    >
+      <Link
+        to={`/projects/${project.id}`}
+        id={`project-card-${project.id}`}
+        data-project-id={project.id}
+        aria-label={`View ${project.title} project details`}
+        onClick={(e) => {
+          // Allow middle click or ctrl/cmd click to naturally open in new tab
+          if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+            e.preventDefault();
+            if (onNavigate) {
+              onNavigate(project.id);
+            }
+          }
+        }}
+        className="group relative overflow-hidden rounded-2xl cursor-pointer h-full block focus:outline-none focus:ring-2 focus:ring-[#4A8CFF] focus:ring-offset-2 focus:ring-offset-black"
+      >
+        {cardInner}
+      </Link>
     </motion.div>
   );
 }

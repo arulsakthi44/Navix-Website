@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "motion/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
@@ -47,14 +47,20 @@ export function SrsAcademyProject() {
         {/* HERO SECTION */}
         <section className="srs-hero-section">
           <div className="srs-container">
-            <button
-              onClick={handleBack}
+            <Link
+              to="/projects"
+              onClick={(e) => {
+                if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+                  e.preventDefault();
+                  handleBack();
+                }
+              }}
               className="srs-back-btn"
               aria-label="Back to Projects"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Projects</span>
-            </button>
+            </Link>
 
             {/* Hero Banner */}
             <div className="srs-hero-banner-frame">
@@ -539,21 +545,22 @@ export function SrsAcademyProject() {
               </div>
 
               <div className="srs-cta-right">
-                <button
-                  onClick={() => navigate("/contact")}
+                <Link
+                  to="/contact"
                   className="srs-cta-btn-primary"
                 >
                   <span>Let’s Talk</span>
                   <ArrowUpRight className="w-4 h-4" />
-                </button>
+                </Link>
 
-                <motion.button
-                  onClick={handleBack}
-                  whileHover={{
-                    y: -6,
-                    transition: { duration: 0.3, ease: "easeOut" },
+                <Link
+                  to="/projects"
+                  onClick={(e) => {
+                    if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+                      e.preventDefault();
+                      handleBack();
+                    }
                   }}
-                  whileTap={{ scale: 0.98 }}
                   className="srs-view-all-projects-btn"
                   style={{
                     backgroundImage:
@@ -562,7 +569,7 @@ export function SrsAcademyProject() {
                   }}
                 >
                   View All Projects
-                </motion.button>
+                </Link>
               </div>
             </div>
           </div>

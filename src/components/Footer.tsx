@@ -4,46 +4,87 @@ import navixLogo from "../assets/navix-logo.png";
 import { clearSavedWorkScroll } from '../utils/scrollRestoration';
 
 
+interface FooterLink {
+  name: string;
+  href: string;
+}
+
+const quickLinks: FooterLink[] = [
+  { name: 'Services', href: '/#services' },
+  { name: 'Work', href: '/projects' },
+  { name: 'About', href: '/#about' },
+  { name: 'Contact', href: '/contact' },
+];
+
 export function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, item: string) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, item: FooterLink | string) => {
+    // If middle click or ctrl/cmd click, allow browser to open link naturally in new tab
+    if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey) {
+      return;
+    }
+
     e.preventDefault();
-    const sectionId = item.toLowerCase();
+    const itemName = typeof item === 'string' ? item : item.name;
 
     // If clicking "Home" (logo), navigate to home page and scroll to top
-    if (sectionId === 'home') {
+    if (itemName.toLowerCase() === 'home') {
       navigate('/');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
     // If clicking "Work", navigate to projects page
-    if (sectionId === 'work') {
+    if (itemName === 'Work') {
       clearSavedWorkScroll();
       navigate('/projects');
       window.scrollTo({ top: 0, behavior: 'instant' });
       return;
     }
 
-    // If we're on the home page, just scroll to section
-    if (location.pathname === '/') {
-      const element = document.getElementById(sectionId);
+    // If clicking "Contact", navigate to contact page
+    if (itemName === 'Contact') {
+      navigate('/contact');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
 
-      if (element) {
-        const navHeight = 80;
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - navHeight;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+    // If clicking "Services"
+    if (itemName === 'Services') {
+      if (location.pathname === '/') {
+        const element = document.getElementById('services');
+        if (element) {
+          const navHeight = 80;
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: elementPosition - navHeight,
+            behavior: 'smooth'
+          });
+        }
+      } else {
+        navigate('/#services');
       }
-    } else {
-      // If we're on another page, navigate to home with hash
-      navigate(`/#${sectionId}`);
+      return;
+    }
+
+    // If clicking "About"
+    if (itemName === 'About') {
+      if (location.pathname === '/') {
+        const element = document.getElementById('about');
+        if (element) {
+          const navHeight = 80;
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: elementPosition - navHeight,
+            behavior: 'smooth'
+          });
+        }
+      } else {
+        navigate('/#about');
+      }
+      return;
     }
   };
   return (
@@ -85,14 +126,14 @@ export function Footer() {
           </div>
 
 
-          {/* Quick Links placeholder (intentionally empty to preserve layout)*/}
+          {/* Quick Links */}
           <div className="space-y-4">
             <h3 className="text-white/90 tracking-wide text-xl">Quick Links</h3>
             <ul className="space-y-2">
-              {['Services', 'Work', 'About', 'Contact'].map((item) => (
-                <li key={item}>
+              {quickLinks.map((item) => (
+                <li key={item.name}>
                   <motion.a
-                    href={`#${item.toLowerCase()}`}
+                    href={item.href}
                     onClick={(e) => handleClick(e, item)}
                     className="text-white/50 transition-all text-base bg-gradient-to-r from-[#EE6A1F] to-[#1A70FF] bg-clip-text hover:text-transparent"
                     style={{
@@ -104,7 +145,7 @@ export function Footer() {
                       WebkitTextFillColor: 'transparent',
                     }}
                   >
-                    {item}
+                    {item.name}
                   </motion.a>
                 </li>
               ))}
@@ -114,13 +155,19 @@ export function Footer() {
           {/* Contact */}
           <div className="space-y-4">
             <h3 className="text-white/90 tracking-wide text-xl">Get In Touch</h3>
-            <p className="bg-gradient-to-r from-[#EE6A1F] to-[#1A70FF] bg-clip-text text-transparent hover:opacity-80 transition-opacity cursor-pointer">
+            <a
+              href="mailto:navixmedia.in@gmail.com"
+              className="block bg-gradient-to-r from-[#EE6A1F] to-[#1A70FF] bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+            >
               navixmedia.in@gmail.com
-            </p>
+            </a>
 
-            <p className="bg-gradient-to-r from-[#EE6A1F] to-[#1A70FF] bg-clip-text text-transparent hover:opacity-80 transition-opacity cursor-pointer">
+            <a
+              href="tel:+916369870655"
+              className="block bg-gradient-to-r from-[#EE6A1F] to-[#1A70FF] bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+            >
               +91 63698 70655
-            </p>
+            </a>
 
             {/* Social Links */}
             <div className="flex gap-4 pt-2">
