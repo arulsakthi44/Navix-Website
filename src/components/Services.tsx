@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import Fi11891732 from '../imports/Fi11891732';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
@@ -171,6 +172,28 @@ export function Services() {
             </motion.div>
           ))}
         </div>
+
+        {/* Projects CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-12 flex justify-center"
+        >
+          <Link to="/projects">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-8 py-4 rounded-[80px] border-[3px] border-solid border-white text-white transition-all duration-300 font-medium text-lg tracking-wide inline-block"
+              style={{
+                backgroundImage: "linear-gradient(100.351deg, rgb(0, 0, 0) 14.842%, rgb(95, 48, 20) 25.921%, rgb(172, 76, 21) 37%, rgb(198, 198, 198) 51.41%, rgb(32, 86, 174) 68.977%, rgb(0, 0, 0) 89.412%)"
+              }}
+            >
+              Our Projects
+            </motion.button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

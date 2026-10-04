@@ -1,8 +1,10 @@
+import React, { useEffect } from "react";
 import { motion } from "motion/react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ArrowLeft } from "lucide-react";
+import { useBackToProjects } from "../utils/scrollRestoration";
 
 import I2W from "../assets/i2w-result.png";
 import Schoolone from "../assets/i2g-1.png";
@@ -756,21 +758,95 @@ const PROJECT_DATA: { [key: number]: ProjectData } = {
   //     "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1200",
   //   ],
   // },
+  8: {
+    id: 8,
+    title: "Internme - Paid internship in India",
+    description: "India's leading paid internship portal offering internships in AI, Data, Full Stack & Core sectors.",
+    category: "Website Development",
+    imageUrl: "/src/assets/internme_thumb_new.png",
+    impactImage: "",
+    client: "Internme",
+    year: "2024",
+    services: [],
+    fullDescription: "",
+    conceptDescription: "",
+    moodboardImages: [],
+    sketchImages: [],
+    processImages: []
+  },
+  9: {
+    id: 9,
+    title: "Equilibras™ - Health & Performance Footwear",
+    description: "Patented e-bed™ footwear technology engineered to support how your feet move and function.",
+    category: "Website Development",
+    imageUrl: "/src/assets/equilibras_thumb_new.jpg",
+    impactImage: "",
+    client: "Equilibras",
+    year: "2024",
+    services: [],
+    fullDescription: "",
+    conceptDescription: "",
+    moodboardImages: [],
+    sketchImages: [],
+    processImages: []
+  },
+  10: {
+    id: 10,
+    title: "i2Global Edufusion",
+    description: "Edufusion digital learning and school management platform for i2Global.",
+    category: "Website Development",
+    imageUrl: "/src/assets/edufusion_thumb_new.png",
+    impactImage: "",
+    client: "i2Global",
+    year: "2024",
+    services: [],
+    fullDescription: "",
+    conceptDescription: "",
+    moodboardImages: [],
+    sketchImages: [],
+    processImages: []
+  },
+  11: {
+    id: 11,
+    title: "SRS Academy - Learning Reimagined",
+    description: "An educational platform delivering student-focused learning, competitive programs, and expert mentorship across India.",
+    category: "Website Development",
+    imageUrl: "/src/assets/srs_academy_thumb_new.png",
+    impactImage: "",
+    client: "SRS Academy",
+    year: "2024",
+    services: [],
+    fullDescription: "",
+    conceptDescription: "",
+    moodboardImages: [],
+    sketchImages: [],
+    processImages: []
+  }
 };
 
 export function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const handleBack = useBackToProjects();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [id]);
 
   const project = PROJECT_DATA[Number(id)];
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div
+        className="min-h-screen bg-black flex items-center justify-center"
+        style={{ fontFamily: '"Bricolage Grotesque", sans-serif' }}
+      >
         <div className="text-center">
           <h1 className="text-white text-4xl mb-4">Project Not Found</h1>
           <button
-            onClick={() => navigate("/projects")}
+            onClick={handleBack}
             className="text-blue-400 hover:text-blue-300 transition-colors"
           >
             Back to Projects
@@ -781,7 +857,10 @@ export function ProjectDetail() {
   }
 
   return (
-    <div className="relative min-h-screen bg-black overflow-hidden">
+    <div
+      className="relative min-h-screen bg-black overflow-hidden"
+      style={{ fontFamily: '"Bricolage Grotesque", sans-serif' }}
+    >
       {/* Ambient background gradients */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]" />
@@ -799,7 +878,7 @@ export function ProjectDetail() {
             <motion.button
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              onClick={() => navigate("/projects")}
+              onClick={handleBack}
               className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group"
             >
               <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
@@ -1204,7 +1283,7 @@ export function ProjectDetail() {
             className="max-w-7xl mx-auto text-center"
           >
             <motion.button
-              onClick={() => navigate("/projects")}
+              onClick={handleBack}
               whileHover={{
                 y: -10,
                 transition: { duration: 0.3, ease: "easeOut" },

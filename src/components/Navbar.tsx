@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import navixLogo from "../assets/navix-logo.png";
+import { clearSavedWorkScroll } from '../utils/scrollRestoration';
 
 
 export function Navbar() {
@@ -50,8 +51,9 @@ export function Navbar() {
 
       // If clicking "Work", navigate to projects page
       if (sectionId === 'work') {
+        clearSavedWorkScroll();
         navigate('/projects');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'instant' });
         return;
       }
 

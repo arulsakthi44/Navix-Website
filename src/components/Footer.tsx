@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import navixLogo from "../assets/navix-logo.png";
+import { clearSavedWorkScroll } from '../utils/scrollRestoration';
 
 
 export function Footer() {
@@ -20,8 +21,9 @@ export function Footer() {
 
     // If clicking "Work", navigate to projects page
     if (sectionId === 'work') {
+      clearSavedWorkScroll();
       navigate('/projects');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'instant' });
       return;
     }
 
